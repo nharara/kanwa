@@ -5,4 +5,8 @@ class Post < ApplicationRecord
   has_many :emotions, through: :tags
   validates :title, presence: true
   validates :content, presence: true, length: { minimum: 5, maximum: 200 }
+
+  def upvote
+    post.votes += 1
+  end
 end

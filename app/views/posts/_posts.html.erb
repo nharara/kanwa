@@ -1,0 +1,16 @@
+<%# display the all the posts %>
+
+<div class="row justify-content-center p-3">
+      <% posts.each do |post| %>
+        <div class="card my-2">
+          <h5 class="card-header"><%= post.title %></h5>
+          <div class="card-body">
+            <h5 class="card-title"><%= post.user.nickname %></h5>
+            <p class="card-text"><%= post.content %></p>
+            <p class='badge text-bg-primary'>votes: <%= post.votes %></p>
+            <br>
+            <a href="#" class="btn btn-primary">comments</a>
+          </div>
+        </div>
+      <% end %>
+  </div>
