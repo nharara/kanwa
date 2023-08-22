@@ -35,13 +35,33 @@ puts 'created emotions and sub emotions'
 
 User.destroy_all
 
-puts 'creating user'
+puts 'creating users'
 
-User.create!(
-  full_name: 'test user',
-  nickname: 'nick',
-  email: 'false@mail.com',
-  password: 'encrypted'
-)
+count = 0
 
-puts 'test user created'
+10.times do
+  User.create!(
+    full_name: "#{Faker::Name.first_name} #{Faker::Name.last_name}",
+    nickname: "nick#{count}",
+    email: "false#{count}@mail.com",
+    password: 'encrypted'
+  )
+  count += 1
+end
+
+puts "#{User.count}users created"
+
+puts "creating posts"
+
+User.all.each do |user|
+  10.times do
+    post = Post.new(
+      title: Faker::Lorem.sentence,
+      content: Faker::Lorem.paragraph * 3
+    )
+    post.user = user
+    post.save
+  end
+end
+
+puts "#{Post.count} posts created"
