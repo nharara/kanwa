@@ -1,0 +1,6 @@
+<%= simple_form_for entries do |f| %>
+  <%= f.input :situation, as :select, collection: ['family', 'work', 'friends', 'relationship', 'other'] %>
+  <%= f.input :emotion as :select, collection: @emotions %>
+  <%= f.input :action as :select, prompt: "Did you do the opposite action to how your emotion told you to act?", collection: ['Yes', 'No'] %>
+  <%= f.input :consequence as :select, prompt: "Did things go the way you wanted through your action?" collection: ['Yes', 'No'] %>
+<% end %>
