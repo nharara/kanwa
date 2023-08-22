@@ -6,6 +6,8 @@ Rails.application.routes.draw do
   resources :posts, only: %i[index create update delete] do
     resources :comments, only: %i[create update delete]
   end
+
+  get "/dashboard", to: "pages#dashboard", as: :dashboard
   # Defines the root path route ("/")
   # root "articles#index"
 end
