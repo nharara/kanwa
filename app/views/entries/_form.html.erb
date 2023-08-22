@@ -1,7 +1,25 @@
-<%= simple_form_for entry do |f| %>
-  <%= f.input :situation, collection: ['family', 'work', 'friends', 'relationship', 'other'] %>
-  <%= f.association :emotion, collection: emotions %>
-  <%= f.input :action, placeholder: "Did you do the opposite action to how your emotion told you to act?", collection: ['Yes', 'No'] %>
-  <%= f.input :consequence, placeholder: "Did things go the way you wanted through your action?", collection: ['Yes', 'No'] %>
-  <%= f.submit %>
-<% end %>
+<div data-controller="input-box">
+  <%= simple_form_for entry, html: {data: {input_box_target: "form"}} do |f| %>
+    <%= f.input :situation,
+            as: :radio_buttons,
+            collection_wrapper_tag: 'div',
+            collection_wrapper_class: 'category-wrapper',
+            item_wrapper_class: 'category-item',
+            input_html: { data: { input_box_target: "situation", action: "change->input-box#toggleOtherSituation" }, class: 'category-selector' },
+            collection: Entry::SITUATIONS %>
+    <div id="other_situation_input" data-input-box-target="textSituation" class="d-none">
+      <%= f.input :situation, label: "Please specify" %>
+    </div>
+    <%= f.association :emotion,
+                collection: emotions,
+                input_html: { data: { "input-box-target" => "emotion", action: "change->input-box#toggleOtherEmotion"}} %>
+    <div data-input-box-target="childEmotion"></div>
+    <div data-input-box-target="action">
+      <%= f.input :action, label: "Did you do the opposite action to how your emotion told you to act?", collection: ['Yes', 'No'] %>
+    </div>
+    <div data-input-box-target="consequence">
+      <%= f.input :consequence, label: "Did things go the way you wanted through your action?", collection: ['Yes', 'No'] %>
+    </div>
+    <%= f.submit %>
+  <% end %>
+</div>
