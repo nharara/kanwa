@@ -32,3 +32,16 @@ emotions.each_with_index do |emotion, index|
 end
 
 puts 'created emotions and sub emotions'
+
+User.destroy_all
+
+puts 'creating user'
+
+User.create!(
+  full_name: 'test user',
+  nickname: 'nick',
+  email: 'false@mail.com',
+  password: 'encrypted'
+)
+
+puts 'test user created'
