@@ -1,0 +1,6 @@
+<label for="`specific">Specific Emotion</label>
+<select name="specific" class="form-select select required">
+  <% emotions.each do |emotion| %>
+    <option value="<%= emotion.id %>" label=" <%= emotion.name %>"></option>
+  <% end %>
+</select>
