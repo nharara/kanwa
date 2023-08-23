@@ -1,9 +1,2 @@
 
-<div class="container">
-  <p>Generated at: <%=DateTime.now.strftime("%I:%M%P %d/%m/%Y ")  %></p>
-  <div class="row justify-content-center">
-    <div class="col-12">
-      <%= render 'entries', entries: @entries %>
-    </div>
-  </div>
-</div>
+<%= render 'entries', entries: @entries %>
