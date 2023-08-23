@@ -12,7 +12,11 @@ export default class extends Controller {
     // console.log(event.currentTarget.value)
     if (selectedSituation === 'other') {
       // this.textSituationTarget.classList.remove("d-none")
-      this.textSituationTarget.innerHTML = '<label class="form-label string required" for= "entry_situation" > Please specify <abbr title="required">*</abbr></label> <input class="form-control string required" type="text" name="entry[situation]" id="entry_situation">'
+      this.textSituationTarget.innerHTML =
+        `<label class="form-label string required" for= "entry_situation" >
+        Please specify <abbr title="required">*</abbr>
+        </label>
+        <input class="form-control string required" type="text" name="entry[situation]" id="entry_situation">`
     } else {
       // this.textSituationTarget.classList.add("d-none")
       this.textSituationTarget.innerHTML = ''

@@ -1,7 +1,7 @@
 class EntriesController < ApplicationController
   def index
     @entries = Entry.all
-    @entries = @entries.search(params[:query]) if params[:query].present?
+    @entries = @entries.search_by_sac(params[:query]) if params[:query].present?
     @entry = Entry.new
 
     respond_to do |format|
@@ -24,7 +24,6 @@ class EntriesController < ApplicationController
   end
 
   def create
-    raise
     @entry = Entry.new(entry_params)
     emotion = Emotion.find(params[:specific])
     @entry.emotion = emotion

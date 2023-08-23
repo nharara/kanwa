@@ -3,8 +3,10 @@ import ApexCharts from 'apexcharts';
 
 // Connects to data-controller="heatmap"
 export default class extends Controller {
+  static values={keys: Array, datas: Array}
   static targets=["heatmap", "pie", "donut"]
   connect() {
+    console.log(this.keysValue, this.datasValue)
     var heatmapOptions = {
       chart: {
         type: 'heatmap',
@@ -12,35 +14,35 @@ export default class extends Controller {
       },
       series: [{
         name: 'sales',
-        data: [30,40,35,50,49,60,70,91,125]
+        data: this.datasValue
       }],
       xaxis: {
-        categories: [1991,1992,1993,1994,1995,1996,1997, 1998,1999]
+        categories: this.keysValue
       }
     }
     var heatmap = new ApexCharts(this.heatmapTarget, heatmapOptions);
     heatmap.render();
 
-    var pieOptions = {
-      chart: {
-        type: 'pie',
-        // toolbar: {show:false}
-      },
-        series: [44, 55, 13, 33],
-        labels: ['Apple', 'Mango', 'Orange', 'Watermelon']
-      }
-    var pie = new ApexCharts(this.pieTarget, pieOptions);
-    pie.render();
+    // var pieOptions = {
+    //   chart: {
+    //     type: 'pie',
+    //     // toolbar: {show:false}
+    //   },
+    //     series: [44, 55, 13, 33],
+    //     labels: ['Apple', 'Mango', 'Orange', 'Watermelon']
+    //   }
+    // var pie = new ApexCharts(this.pieTarget, pieOptions);
+    // pie.render();
 
-    var donutOptions = {
-      chart: {
-        type: 'donut',
-        // toolbar: {show:false}
-      },
-      series: [44, 55, 13, 33],
-      labels: ['Apple', 'Mango', 'Orange', 'Watermelon']
-    }
-    var donut = new ApexCharts(this.donutTarget, donutOptions);
-    donut.render();
+    // var donutOptions = {
+    //   chart: {
+    //     type: 'donut',
+    //     // toolbar: {show:false}
+    //   },
+    //   series: [44, 55, 13, 33],
+    //   labels: ['Apple', 'Mango', 'Orange', 'Watermelon']
+    // }
+    // var donut = new ApexCharts(this.donutTarget, donutOptions);
+    // donut.render();
   }
 }
