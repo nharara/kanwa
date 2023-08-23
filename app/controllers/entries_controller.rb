@@ -8,7 +8,7 @@ class EntriesController < ApplicationController
     respond_to do |format|
       format.html
       format.pdf do
-        render pdf: "kanwa #{date}", template: "entries/pdf_entries", formats: [:html] # Excluding ".pdf" extension.
+        render pdf: "kanwa #{date}", template: "entries/_entries", formats: [:html] # Excluding ".pdf" extension.
       end
     end
   end

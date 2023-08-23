@@ -1,3 +1,11 @@
-body{
-  background-color: rgba(255, 255, 0, 0.244);
+
+.card{
+  border-radius: 5px;
+  margin-top:1em;
+  margin-bottom: 1em;
+  padding: 1em;
+  font-size: 18px;
+  background-color: rgb(229, 227, 227);
+  box-shadow: 1px 1px 3px gray ;
+  page-break-inside: avoid;
 }
