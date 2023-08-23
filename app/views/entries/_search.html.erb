@@ -4,9 +4,32 @@
       <%= text_field_tag :query,
             params[:query],
             class: "form-control searchbar",
-            placeholder: "Search..."
+            placeholder: "Search by keyword..."
         %>
-      <%# <%= submit_tag "Search", name: "", class: "btn btn-primary" %>
+      <%= submit_tag "Search", name: "", class: "btn btn-primary" %>
+      <%# Date range filter is from here %>
+      <input type="text" name="datefilter" value="Filter by date range" />
+      <script type="text/javascript">
+        $(function() {
+
+          $('input[name="datefilter"]').daterangepicker({
+            autoUpdateInput: false,
+              locale: {
+                cancelLabel: 'Clear'
+              }
+          });
+
+          $('input[name="datefilter"]').on('apply.daterangepicker', function(ev, picker) {
+              $(this).val(picker.startDate.format('MM/DD/YYYY') + ' - ' + picker.endDate.format('MM/DD/YYYY'));
+          });
+
+          $('input[name="datefilter"]').on('cancel.daterangepicker', function(ev, picker) {
+            $(this).val('');
+          });
+
+        });
+      </script>
+      <%# Date range filter ends here %>
     <% end %>
   </div>
 </div>

@@ -2,6 +2,7 @@ class EntriesController < ApplicationController
   def index
     @entries = Entry.all
     @entries = @entries.search_by_sac(params[:query]) if params[:query].present?
+    @entries = @entries.where("created_at >= ? and created_at <= ?", params[:datefilter].split(" - ").first, params[:datefilter].split(" - ").last) if params[:datefilter].present?
     @entry = Entry.new
 
     respond_to do |format|
