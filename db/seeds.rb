@@ -65,3 +65,20 @@ User.all.each do |user|
 end
 
 puts "#{Post.count} posts created"
+
+
+User.all.each do |user|
+  60.times do
+    time = Faker::Date.between(from: 30.days.ago, to: Date.today)
+    entry = Entry.new(
+      emotion:  Emotion.all.sample,
+      created_at: time,
+      updated_at: time,
+      action: ['Yes', 'No'].sample,
+      consequence: ['Yes', 'No'].sample,
+      situation: ['family', 'work', 'friends', 'relationship'].sample
+    )
+    entry.user = user
+    entry.save
+  end
+end
