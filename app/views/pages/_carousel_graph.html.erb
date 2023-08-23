@@ -4,7 +4,7 @@
     <button type="button" data-bs-target="#carouselgraph" data-bs-slide-to="1" aria-label="Slide 2"></button>
     <button type="button" data-bs-target="#carouselgraph" data-bs-slide-to="2" aria-label="Slide 3"></button>
   </div>
-  <div data-controller="apexchart" class="carousel-inner" data-apexchart-keys-value="<%= @entries_by_date.keys.map(&:to_s) %>" data-apexchart-datas-value="<%= @entries_by_date.values.map(&:count) %> ">
+  <div id="chart" data-controller="apexchart" class="carousel-inner" data-apexchart-info-value="<%= @entries_by_date.to_json %> " data-apexchart-datas-value="<%= @entries_by_date.values.map(&:count) %> ">
     <div class="carousel-item active">
       <div class="d-block w-100" data-apexchart-target="heatmap">
       </div>
