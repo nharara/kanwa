@@ -12,12 +12,18 @@
         <h1 class="modal-title fs-5" id="staticBackdropLabel">Create a new post</h1>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
-      <div class="modal-body">
+      <div class="modal-body" data-controller="input-box" >
 
         <%= simple_form_for post do |f| %>
           <%= f.input :title %>
           <%= f.input :content %>
-          <%= f.submit class: 'btn btn-primary' %>
+          <%= f.association :emotion,
+                collection: parent_emotions,
+                input_html: { data: { "input-box-target" => "emotion", action: "change->input-box#toggleOtherEmotion"}} %>
+
+          <div  class='my-3' data-input-box-target="childEmotion"></div>
+
+          <%= f.submit class: 'btn btn-primary my-1' %>
         <% end %>
 
       </div>

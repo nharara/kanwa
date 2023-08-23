@@ -13,11 +13,20 @@ class PostsController < ApplicationController
     end
 
     @post = Post.new
+
+    @parent_emotions = Emotion.where(parent_emotion: nil)
+    respond_to do |format|
+      format.html # Follow regular flow of Rails
+      @child_emotions = Emotion.find(params[:query]).child_emotions if params[:query]
+      format.text { render partial: "entries/new_child", locals: { emotions: @child_emotions }, formats: [:html] }
+    end
   end
 
   def create
     @post = Post.new(post_params)
     @post.user = current_user
+    emotion = Emotion.find(params[:specific])
+    @post.emotion = emotion
 
     if @post.save
       redirect_to posts_path

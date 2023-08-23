@@ -53,11 +53,14 @@ puts "#{User.count}users created"
 
 puts "creating posts"
 
+emotions = Emotion.where.not(emotion_id: nil)
+
 User.all.each do |user|
   10.times do
     post = Post.new(
       title: Faker::Lorem.sentence,
-      content: Faker::Lorem.paragraph * 3
+      content: Faker::Lorem.paragraph * 3,
+      emotion: emotions.sample
     )
     post.user = user
     post.save
