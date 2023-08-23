@@ -3,6 +3,14 @@ class EntriesController < ApplicationController
     @entries = Entry.all
     @entries = @entries.search_by_sac(params[:query]) if params[:query].present?
     @entry = Entry.new
+
+    respond_to do |format|
+      format.html
+      format.pdf do
+        render pdf: "kanwa_entries_file#{Date.now.strftime('%d %b %Y')}",
+               template: 'pdf_entries/entries.html.erb'
+      end
+    end
   end
 
   def new
