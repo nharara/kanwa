@@ -7,22 +7,90 @@ export default class extends Controller {
   static targets=["heatmap", "pie", "donut"]
   connect() {
     console.log(this.keysValue, this.datasValue)
-    var heatmapOptions = {
-      chart: {
-        type: 'heatmap',
-        // toolbar: {show:false}
-      },
-      series: [{
-        name: 'sales',
-        data: this.datasValue
-      }],
-      xaxis: {
-        categories: this.keysValue
-      }
-    }
-    var heatmap = new ApexCharts(this.heatmapTarget, heatmapOptions);
-    heatmap.render();
+    function generateData(count, yrange) {
+      var i = 0;
+      var series = [];
+      while (i < count) {
+        var x = (i + 1).toString();
+        var y =
+        Math.floor(Math.random() * (yrange.max - yrange.min + 1)) + yrange.min;
 
+        series.push({
+          x: x,
+          y: y
+        });
+        i++;
+      }
+      return series;
+      }
+    // var heatmapOptions = {
+    //   chart: {
+    //     type: 'heatmap',
+    //     // toolbar: {show:false}
+    //   },
+    //   series: [{
+    //     name: 'sales',
+    //     data: this.datasValue
+    //   }],
+    //   xaxis: {
+    //     categories: this.keysValue
+    //   }
+    // }
+    // var heatmap = new ApexCharts(this.heatmapTarget, heatmapOptions);
+    // heatmap.render();
+
+    var heatmapOptions = {
+      series: [{
+      name: 'M',
+      data: generateData(6, {
+        min: 0,
+        max: 15
+      })
+    },
+    {
+      name: 'Tu',
+      data: generateData(6, {
+        min: 0,
+        max: 15
+      })
+    },
+    {
+      name: 'We',
+      data: generateData(6, {
+        min: 0,
+        max: 15
+      })
+    },
+    {
+      name: 'Thus',
+      data: generateData(6, {
+        min: 0,
+        max: 15
+      })
+    },
+    {
+      name: 'Fri',
+      data: generateData(6, {
+        min: 0,
+        max: 15
+      })
+    },
+    ],
+      chart: {
+      height: 350,
+      type: 'heatmap',
+    },
+    dataLabels: {
+      enabled: false
+    },
+    colors: ["#008FFB"],
+    title: {
+      text: 'HeatMap Chart (Single color)'
+    },
+    };
+
+    var chart = new ApexCharts(document.querySelector("#chart"), heatmapOptions);
+    chart.render();
     // var pieOptions = {
     //   chart: {
     //     type: 'pie',
