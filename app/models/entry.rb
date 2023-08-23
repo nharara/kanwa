@@ -4,14 +4,8 @@ class Entry < ApplicationRecord
   validates :situation, presence: true
   validates :action, presence: true
   validates :consequence, presence: true
-  before_create :change_url
-
 
   SITUATIONS = ['family', 'work', 'friends', 'relationship', 'other']
-
-  def change_url
-    self.url = url&.gsub(/watch\?v=/, 'embed/')
-  end
 
   include PgSearch::Model
   pg_search_scope :search_by_sac,
