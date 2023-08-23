@@ -3,27 +3,19 @@
     <h1>Entry History</h1>
   </div>
   <%# This is the start of the dropdown code %>
-  <div class="dropdown">
-    <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-      Search by Category
-    </button>
-    <ul class="dropdown-menu">
-      <li><a class="dropdown-item" href="#">Situation</a></li>
-      <li><a class="dropdown-item" href="#">Emotion</a></li>
-      <li><a class="dropdown-item" href="#">Action</a></li>
-      <li><a class="dropdown-item" href="#">Consequence</a></li>
-    </ul>
-  </div>
+  <%= render "search" %>
   <%# This is the end of the dropdown code %>
   <%# <%= render "search-category" %>  <%# Change render name to correct one later  %>
   <% @entries.each do |entry| %>
-    <div class="card text-bg-light mb-3 od" <%# style="max-width: 18rem"; %>>
+    <div class="card text-bg-light mb-3 od">
       <div class="card-header d-flex justify-content-between">
-        <p>Emotional Tag here!</p>
+        <p><%= entry.emotion.name.capitalize %></p>
         <p><%= entry.created_at.strftime("%F") %></p>
       </div>
       <div class="card-body d-flex justify-content-">
-        <p class="card-text">Insert content here</p>
+        <p class="card-text">Situation:<%= entry.situation %></p>
+        <p class="card-text">Action: <%= entry.action %></p>
+        <p class="card-text">Consequence: <%= entry.consequence %></p>
       </div>
     </div>
   <% end %>

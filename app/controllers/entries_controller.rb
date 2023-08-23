@@ -1,8 +1,7 @@
 class EntriesController < ApplicationController
   def index
-
     @entries = Entry.all
-    @entries = @entries.search(params[:query]) if params[:query].present?
+    @entries = @entries.search_by_sac(params[:query]) if params[:query].present?
     @entry = Entry.new
   end
 
