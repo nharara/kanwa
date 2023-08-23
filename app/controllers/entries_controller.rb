@@ -24,9 +24,12 @@ class EntriesController < ApplicationController
   end
 
   def create
-    @entry = Entry.new(entry_params)
-    emotion = Emotion.find(params[:specific])
-    @entry.emotion = emotion
+    @entry = Entry.new
+    @entry.situation = entry_params[:situation]
+    @entry.emotion = Emotion.find(entry_params[:specific_emotion_id])
+    @entry.action = entry_params[:action]
+    @entry.consequence = entry_params[:consequence]
+    @entry.user = current_user
     if @entry.save
       redirect_to entries_path
     else
@@ -40,7 +43,7 @@ class EntriesController < ApplicationController
   private
 
   def entry_params
-    params.require(:entry).permit(:situation, :action, :consequence)
+    params.require(:entry).permit(:situation, :action, :consequence, :specific_emotion_id)
   end
 
 end
