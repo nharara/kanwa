@@ -19,4 +19,8 @@
       </div>
     </div>
   <% end %>
+  <div class='entries'>
+    <%= link_to 'generate pdf', entries_path(format: :pdf), class: 'btn btn-warning p-2 my-3'   %>
+    <%= render 'entries', entries: @entries %>
+  </div>
 </div>
