@@ -20,7 +20,7 @@
 
   <%# add a new post %>
   <div class="container mb-2">
-  <%= render 'new_post_form', post: @post %>
+  <%= render 'new_post_form', post: @post, parent_emotions: @parent_emotions %>
   </div>
 
   <%# all the posts %>

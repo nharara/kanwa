@@ -60,16 +60,9 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_23_032637) do
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "emotion_id"
+    t.index ["emotion_id"], name: "index_posts_on_emotion_id"
     t.index ["user_id"], name: "index_posts_on_user_id"
-  end
-
-  create_table "tags", force: :cascade do |t|
-    t.bigint "emotion_id", null: false
-    t.bigint "post_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["emotion_id"], name: "index_tags_on_emotion_id"
-    t.index ["post_id"], name: "index_tags_on_post_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -91,7 +84,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_23_032637) do
   add_foreign_key "emotions", "emotions"
   add_foreign_key "entries", "emotions"
   add_foreign_key "entries", "users"
+  add_foreign_key "posts", "emotions"
   add_foreign_key "posts", "users"
-  add_foreign_key "tags", "emotions"
-  add_foreign_key "tags", "posts"
 end
