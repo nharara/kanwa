@@ -7,8 +7,7 @@
             item_wrapper_class: 'category-item',
             input_html: { data: { input_box_target: "situation", action: "change->input-box#toggleOtherSituation" }, class: 'category-selector' },
             collection: Entry::SITUATIONS %>
-    <div id="other_situation_input" data-input-box-target="textSituation" class="d-none">
-      <%= f.input :situation, label: "Please specify" %>
+    <div id="other_situation_input" data-input-box-target="textSituation">
     </div>
     <%= f.association :emotion,
                 collection: emotions,
