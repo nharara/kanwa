@@ -7,29 +7,18 @@
     <script type="text/javascript" src="//cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.js"></script>
     <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.css" />
   </head>
-  <div class="container pt-4">
-    <div class="d-flex justify-content-center">
-      <h1>Entry History</h1>
+  <body>
+    <div class="container pt-4">
+      <div class="d-flex justify-content-center">
+        <h1>Entry History</h1>
+      </div>
+      <%= render "search" %>
+      <%# This is the end of the dropdown code %>
+      <%# <%= render "search-category" %>  <%# Change render name to correct one later  %>
+      <div class='entries'>
+        <%= link_to 'generate pdf', entries_path(format: :pdf), class: 'btn btn-warning p-2 my-3'   %>
+        <%= render 'entries', entries: @entries %>
+      </div>
     </div>
-    <%= render "search" %>
-    <%# This is the end of the dropdown code %>
-    <%# <%= render "search-category" %>  <%# Change render name to correct one later  %>
-    <div class='entries'>
-      <%= link_to 'generate pdf', entries_path(format: :pdf), class: 'btn btn-warning p-2 my-3'   %>
-      <%= render 'entries', entries: @entries %>
-    </div>
-  </div>
-</body>
+  </body>
 </html>
-<div class="container pt-4">
-  <div class="d-flex justify-content-center">
-    <h1>Entry History</h1>
-  </div>
-  <%= render "search" %>
-  <%# This is the end of the dropdown code %>
-  <%# <%= render "search-category" %>  <%# Change render name to correct one later  %>
-  <div class='entries'>
-    <%= link_to 'generate pdf', entries_path(format: :pdf), class: 'btn btn-warning p-2 my-3'   %>
-    <%= render 'entries', entries: @entries %>
-  </div>
-</div>
