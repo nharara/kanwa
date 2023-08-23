@@ -3,35 +3,46 @@ import ApexCharts from 'apexcharts';
 
 // Connects to data-controller="heatmap"
 export default class extends Controller {
-  static values={keys: Array, datas: Array, info: String}
+  static values={keys: Array, datas: Array}
   static targets=["heatmap", "pie", "donut"]
   connect() {
-    const info = JSON.parse(this.infoValue)
-    console.log(info)
-    const data = Array.from(Object.keys(info), (week) => {
-      return {
-      name: week,
-        data: info[week]
-      };
-    })
-    console.log(data)
+    console.log(this.keysValue, this.datasValue)
     var heatmapOptions = {
-      series: data,
       chart: {
-      height: 350,
-      type: 'heatmap',
-    },
-    dataLabels: {
-      enabled: false
-    },
-    colors: ["#008FFB"],
-    title: {
-      text: 'HeatMap Chart (Single color)'
-    },
-    };
+        type: 'heatmap',
+        // toolbar: {show:false}
+      },
+      series: [{
+        name: 'sales',
+        data: this.datasValue
+      }],
+      xaxis: {
+        categories: this.keysValue
+      }
+    }
+    var heatmap = new ApexCharts(this.heatmapTarget, heatmapOptions);
+    heatmap.render();
 
-    var chart = new ApexCharts(document.querySelector("#chart"), heatmapOptions);
-    chart.render();
+    // var pieOptions = {
+    //   chart: {
+    //     type: 'pie',
+    //     // toolbar: {show:false}
+    //   },
+    //     series: [44, 55, 13, 33],
+    //     labels: ['Apple', 'Mango', 'Orange', 'Watermelon']
+    //   }
+    // var pie = new ApexCharts(this.pieTarget, pieOptions);
+    // pie.render();
 
-}
+    // var donutOptions = {
+    //   chart: {
+    //     type: 'donut',
+    //     // toolbar: {show:false}
+    //   },
+    //   series: [44, 55, 13, 33],
+    //   labels: ['Apple', 'Mango', 'Orange', 'Watermelon']
+    // }
+    // var donut = new ApexCharts(this.donutTarget, donutOptions);
+    // donut.render();
+  }
 }
