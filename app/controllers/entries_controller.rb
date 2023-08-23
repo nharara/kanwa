@@ -16,7 +16,6 @@ class EntriesController < ApplicationController
   end
 
   def create
-    raise
     @entry = Entry.new(entry_params)
     emotion = Emotion.find(params[:specific])
     @entry.emotion = emotion

@@ -11,13 +11,31 @@
     </div>
     <%= f.association :emotion,
                 collection: emotions,
-                input_html: { data: { "input-box-target" => "emotion", action: "change->input-box#toggleOtherEmotion"}} %>
+                as: :radio_buttons,
+                collection_wrapper_tag: 'div',
+                collection_wrapper_class: 'category-wrapper',
+                item_wrapper_class: 'category-item',
+                input_html: { data: { "input-box-target" => "emotion", action: "change->input-box#toggleOtherEmotion"}, class: 'category-selector'} %>
     <div data-input-box-target="childEmotion"></div>
     <div data-input-box-target="action">
-      <%= f.input :action, label: "Did you do the opposite action to how your emotion told you to act?", collection: ['Yes', 'No'] %>
+      <%= f.input :action,
+            as: :radio_buttons,
+            collection_wrapper_tag: 'div',
+            collection_wrapper_class: 'category-wrapper',
+            item_wrapper_class: 'category-item',
+            input_html: { class: 'category-selector' },
+            collection: ['Yes', 'No'],
+            label: "Did you do the opposite action to how your emotion told you to act?" %>
     </div>
     <div data-input-box-target="consequence">
-      <%= f.input :consequence, label: "Did things go the way you wanted through your action?", collection: ['Yes', 'No'] %>
+      <%= f.input :consequence,
+            as: :radio_buttons,
+            collection_wrapper_tag: 'div',
+            collection_wrapper_class: 'category-wrapper',
+            item_wrapper_class: 'category-item',
+            input_html: { class: 'category-selector' },
+            collection: ['Yes', 'No'],
+            label: "Did things go the way you wanted through your action?" %>
     </div>
     <%= f.submit %>
   <% end %>
