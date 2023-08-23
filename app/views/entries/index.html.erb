@@ -2,12 +2,11 @@
   <div class="d-flex justify-content-center">
     <h1>Entry History</h1>
   </div>
-  <%# This is the start of the dropdown code %>
   <%= render "search" %>
   <%# This is the end of the dropdown code %>
   <%# <%= render "search-category" %>  <%# Change render name to correct one later  %>
   <div class='entries'>
-  <%= link_to 'generate pdf', entries_path(format: :pdf), class: 'btn btn-warning p-2 my-3' %>
+    <%= link_to 'generate pdf', entries_path(format: :pdf), class: 'btn btn-warning p-2 my-3'   %>
     <%= render 'entries', entries: @entries %>
   </div>
 </div>

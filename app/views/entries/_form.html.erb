@@ -1,4 +1,4 @@
-<div data-controller="input-box">
+<div data-controller="input-box" class="form-container">
   <%= simple_form_for entry, html: {data: {input_box_target: "form"}} do |f| %>
     <%= f.input :situation,
             as: :radio_buttons,
@@ -37,6 +37,6 @@
             collection: ['Yes', 'No'],
             label: "Did things go the way you wanted through your action?" %>
     </div>
-    <%= f.submit %>
+    <%= f.submit class: 'btn btn-success'%>
   <% end %>
 </div>

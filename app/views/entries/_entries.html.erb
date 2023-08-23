@@ -1,14 +1,13 @@
-
-<% entries.each do |entry| %>
-    <div class="card text-bg-light mb-3 od">
-      <div class="card-header d-flex justify-content-between">
-        <p><%= entry.emotion.name.capitalize %></p>
-        <p><%= entry.created_at.strftime("%F") %></p>
-      </div>
-      <div class="card-body justify-content-center">
-        <p class="card-text">Situation: <%= entry.situation.capitalize %></p>
-        <p class="card-text">Did I act through my emotions: <%= entry.action %></p>
-        <p class="card-text">Turned out well: <%= entry.consequence %></p>
-      </div>
+<% @entries.each do |entry| %>
+  <div class="card text-bg-light mb-3 od">
+    <div class="card-header d-flex justify-content-between">
+      <p><%= entry.emotion.name.capitalize %></p>
+      <p><%= entry.created_at.strftime("%F") %></p>
     </div>
-  <% end %>
+    <div class="card-body justify-content-center">
+      <p class="card-text">Situation: <%= entry.situation.capitalize %></p>
+      <p class="card-text">Did I act through my emotions: <%= entry.action %></p>
+      <p class="card-text">Turned out well: <%= entry.consequence %></p>
+    </div>
+  </div>
+<% end %>
