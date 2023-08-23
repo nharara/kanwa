@@ -6,7 +6,19 @@
   <%= render "search" %>
   <%# This is the end of the dropdown code %>
   <%# <%= render "search-category" %>  <%# Change render name to correct one later  %>
-
+  <% @entries.each do |entry| %>
+    <div class="card text-bg-light mb-3 od">
+      <div class="card-header d-flex justify-content-between">
+        <p><%= entry.emotion.name.capitalize %></p>
+        <p><%= entry.created_at.strftime("%F") %></p>
+      </div>
+      <div class="card-body justify-content-center">
+        <p class="card-text">Situation: <%= entry.situation.capitalize %></p>
+        <p class="card-text">Did I act through my emotions: <%= entry.action %></p>
+        <p class="card-text">Turned out well: <%= entry.consequence %></p>
+      </div>
+    </div>
+  <% end %>
   <div class='entries'>
     <%= link_to 'generate pdf', entries_path(format: :pdf), class: 'btn btn-warning p-2 my-3'   %>
     <%= render 'entries', entries: @entries %>
