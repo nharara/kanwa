@@ -15,7 +15,7 @@ class Entry < ApplicationRecord
 
   include PgSearch::Model
   pg_search_scope :search_by_sac,
-  against: [ :situation, :action, :consequence ],
+  against: [ :situation, :action, :consequence, :created_at ],
   associated_against: {
     emotion: [ :name ]
   },
