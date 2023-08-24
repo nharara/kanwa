@@ -21,8 +21,8 @@ class PagesController < ApplicationController
     @yes_data = @entries_by_day.transform_values { |entries| entries.count { |entry| entry.action == "Yes" } }
     @no_data = @entries_by_day.transform_values { |entries| entries.count { |entry| entry.action == "No" } }
 
-    @actions_data = [{ name: 'yes', data: @yes_data }, { name: 'no', data: @no_data }]
+    @actions_data = [{ name: 'Opposite Action To Emotion', data: @yes_data }, { name: 'Acted Emotionally', data: @no_data }]
 
-    @emotions_data = Entry.joins(:emotion).where(user: User.first).where(emotion: {parent_emotion: nil}).group(:name).count
+    @emotions_data = Entry.joins(:emotion).where(user: current_user).where(emotion: { parent_emotion: nil }).group(:name).count
   end
 end
