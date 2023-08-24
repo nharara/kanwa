@@ -4,19 +4,23 @@
     <button type="button" data-bs-target="#carouselgraph" data-bs-slide-to="1" aria-label="Slide 2"></button>
     <button type="button" data-bs-target="#carouselgraph" data-bs-slide-to="2" aria-label="Slide 3"></button>
   </div>
+  <%# first item %>
   <div id="chart" data-controller="apexchart" class="carousel-inner" data-apexchart-info-value="<%= @entries_by_date.to_json %> " data-apexchart-datas-value="<%= @entries_by_date.values.map(&:count) %> ">
     <div class="carousel-item active">
       <div class="d-block w-100" data-apexchart-target="heatmap">
       </div>
     </div>
+  <%# second item %>
     <div class="carousel-item">
       <div class="d-block w-100" data-apexchart-target="pie">
       </div>
     </div>
+  <%# third item  %>
     <div class="carousel-item">
       <div class="d-block w-100" data-apexchart-target="donut">
       </div>
     </div>
+
   </div>
   <button class="carousel-control-prev" type="button" data-bs-target="#carouselgraph" data-bs-slide="prev">
     <span class="carousel-control-prev-icon" aria-hidden="true"></span>

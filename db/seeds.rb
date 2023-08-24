@@ -72,8 +72,8 @@ puts "#{Post.count} posts created"
 puts 'creating entries'
 
 User.all.each do |user|
-  60.times do
-    time = Faker::Date.between(from: 30.days.ago, to: Date.today)
+  120.times do
+    time = Faker::Date.between(from: 60.days.ago, to: Date.today)
     entry = Entry.new(
       emotion: Emotion.all.sample,
       created_at: time,
