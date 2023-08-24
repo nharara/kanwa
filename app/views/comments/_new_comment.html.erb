@@ -1,0 +1,18 @@
+<div class="modal fade" id="new-comment-<%=post.id%>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Add a comment</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <%= simple_form_for [post, @comment] do |f| %>
+          <%= f.input :content, placeholder: 'Add a comment' %>
+        </div>
+        <div class="modal-footer">
+          <%= f.submit class: 'btn btn-primary'%>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

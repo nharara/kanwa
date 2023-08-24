@@ -11,6 +11,10 @@ class PostsController < ApplicationController
       format.text { render partial: "posts/posts", locals: { posts: @posts }, formats: [:html] }
     end
 
+    @users = User.all
+    @comments = Comment.all
+    @comment = Comment.new
+
     @post = Post.new
     @parent_emotions = Emotion.where(parent_emotion: nil)
     if params[:query].present?

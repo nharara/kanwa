@@ -1,19 +1,23 @@
 <%# display the all the posts %>
-
 <div class="row justify-content-center p-3">
-      <% posts.each do |post| %>
-        <div class="card my-2">
-          <div class="card-header d-flex justify-content-between">
-            <h5><%= post.title %></h5>
-            <p class='badge text-bg-primary'><%= post.emotion.name %></p>
-          </div>
-          <div class="card-body">
-            <h5 class="card-title"><%= post.user.nickname %></h5>
-            <p class="card-text"><%= post.content %></p>
-            <p class='badge text-bg-primary'>votes: <%= post.votes %></p>
-            <br>
-            <a href="#" class="btn btn-primary">comments</a>
-          </div>
-        </div>
-      <% end %>
-  </div>
+  <% posts.each do |post| %>
+    <div class="card my-2">
+      <div class="card-header d-flex justify-content-between">
+        <h5><%= post.title %></h5>
+        <p class='badge text-bg-primary'><%= post.emotion.name %></p>
+      </div>
+      <div class="card-body">
+        <h5 class="card-title"><%= post.user.nickname %></h5>
+        <p class="card-text"><%= post.content %></p>
+        <p class='badge text-bg-primary'>votes: <%= post.votes %></p>
+        <br>
+        <!-- See comments  -->
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#comment-display-<%=post.id%>">
+          See comments
+        </button>
+        <%= render "comments/comments_display",post: post %>
+        <!-- See comments end -->
+      </div>
+    </div>
+  <% end %>
+</div>

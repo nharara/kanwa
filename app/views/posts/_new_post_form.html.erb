@@ -1,9 +1,8 @@
 <%# new post form %>
- <!-- Button trigger modal -->
+<!-- Button trigger modal -->
 <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
   Add a new post
 </button>
-
 <!-- Modal -->
 <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
   <div class="modal-dialog">
@@ -13,19 +12,15 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body" data-controller="input-box" >
-
         <%= simple_form_for post do |f| %>
           <%= f.input :title %>
           <%= f.input :content %>
           <%= f.association :emotion,
                 collection: parent_emotions,
                 input_html: { data: { "input-box-target" => "emotion", action: "change->input-box#toggleOtherEmotion"}} %>
-
           <div  class='my-3' data-input-box-target="childEmotion"></div>
-
           <%= f.submit class: 'btn btn-primary my-1' %>
         <% end %>
-
       </div>
       <div class="modal-footer d-flex justify-content-start">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">cancel</button>
