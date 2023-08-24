@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light navbar-lewagon">
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="container-fluid">
     <%= link_to "#", class: "navbar-brand" do %>
       <i class="fa-solid fa-k" style="color: #8AB2BB;"></i>
@@ -6,20 +6,22 @@
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+    <div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
       <ul class="navbar-nav">
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            <%# <i class="fa-solid fa-gear"></i> %>
-            Setting
-          </a>
-          <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-            <% if user_signed_in? %>
-              <%= link_to"logout", destroy_user_session_path, data: {turbo_method: :delete}, class: "dropdown-item"%>
-            <% else %>
-              <%= link_to "Sign in", user_session_path, class: "dropdown-item" %>
-              <%= link_to "Register", new_user_registration_path, class: "dropdown-item" %>
-            <% end %>
+        <%# <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="#">Home</a>
+        </li> %>
+        <% if user_signed_in? %>
+          <%= link_to"logout", destroy_user_session_path, data: {turbo_method: :delete}, class: "dropdown-item"%>
+        <% else %>
+          <%= link_to "Sign in", user_session_path, class: "dropdown-item" %>
+          <%= link_to "Register", new_user_registration_path, class: "dropdown-item" %>
+          <li class="nav-item dropdown">
+            <!-- <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Dropdown link
+          </a> -->
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+            <% end  %>
           </ul>
         </li>
       </ul>
