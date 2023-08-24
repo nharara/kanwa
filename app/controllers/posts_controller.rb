@@ -3,9 +3,9 @@ class PostsController < ApplicationController
 
   def index
     @posts = Post.order(created_at: :desc, title: :asc)
-
     @posts = @posts.where("title ILIKE ?", "%#{params[:title]}%") if params[:title].present?
-
+    @posts = @posts.includes([:emotion])
+    @posts = @posts.includes([:user])
     respond_to do |format|
       format.html
       format.text { render partial: "posts/posts", locals: { posts: @posts }, formats: [:html] }
