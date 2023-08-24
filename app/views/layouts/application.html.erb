@@ -9,10 +9,16 @@
     <%= javascript_importmap_tags %>
     <link rel="stylesheet" href="https://unpkg.com/cal-heatmap/dist/cal-heatmap.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.1.2/css/all.css">
+    <script type="text/javascript" src="//cdn.jsdelivr.net/jquery/1/jquery.min.js"></script>
+    <script type="text/javascript" src="//cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+    <script type="text/javascript" src="//cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.js"></script>
+    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.css" />
   </head>
   <body><%= render "shared/navbar" %>
-    <%= render "shared/flashes" %>
-    <%= yield %>
+    <div class="content">
+      <%= render "shared/flashes" %>
+      <%= yield %>
+    </div>
     <%= render "shared/navbar_bottom" %>
   </body>
 </html>
