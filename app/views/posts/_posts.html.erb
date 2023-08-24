@@ -18,7 +18,7 @@
         <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#comment-display-<%=post.id%>">
           See comments
         </button>
-        <%= render "comments/comments_display",post: post %>
+        <%= render "comments/comments_display",comments: post.comments, post: post %>
         <p>Current number of comments: <%= post.comments.count %></p>
         <!-- See comments end -->
       </div>
