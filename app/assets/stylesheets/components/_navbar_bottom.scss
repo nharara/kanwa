@@ -7,8 +7,8 @@
   padding: 0px 50px;
   // color: rgba(0, 0, 0, 0.3);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  background-color: rgba(255, 255, 255, 0.2);
-  backdrop-filter: blur(3px);
+  background-color: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(20px);
   border: 0.5px solid white;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   margin-top: 20px;
@@ -18,8 +18,9 @@
   position: initial;
   bottom: 0;
   height: 50px;
+  position: sticky;
   i {
    font-size: 2em;
-   color: $green;
+   color: $blue;
   }
 }
