@@ -5,10 +5,10 @@
 <div class="container" data-controller="search-posts">
   <div class='search-bar p-3'>
     <%= form_with url: posts_path, method: :get, html: { class: "mb-4", data: { search_posts_target: 'form' }} do |f| %>
-            <%= f.label :query, "Look for a post title" %>
-            <%= f.text_field :query,
+            <%= f.label :title, "Look for a post title" %>
+            <%= f.text_field :title,
                             class: "form-control",
-                            value: params[:query],
+                            value: params[:title],
                             data: {
                               search_posts_target: 'input',
                               action: 'keyup->search-posts#update'
@@ -20,7 +20,7 @@
 
   <%# add a new post %>
   <div class="container mb-2">
-  <%= render 'new_post_form', post: @post, parent_emotions: @parent_emotions %>
+    <%= render 'new_post_form', post: @post, parent_emotions: @parent_emotions %>
   </div>
 
   <%# all the posts %>
