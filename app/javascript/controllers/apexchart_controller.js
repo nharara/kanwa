@@ -37,10 +37,7 @@ export default class extends Controller {
       dataLabels: {
         enabled: false,
       },
-      colors: ["#002080"],
-      title: {
-        text: 'HeatMap Chart (Single color)'
-      },
+      colors: ["#509cad"],
       annotations: {
         points: [
           {
@@ -57,7 +54,7 @@ export default class extends Controller {
               offsetY: 0,
               style: {
                 color: "#fff",
-                background: "#FF4560"
+                background: "#F07167"
               },
 
               text: "Today"
