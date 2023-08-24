@@ -12,6 +12,16 @@ class PagesController < ApplicationController
         { x: day, y: entries.select { |entry| entry.created_at.strftime('%a') == day }.count }
       end
     end
-    # raise
+
+    @entries = Entry.all
+    # turn entries into entries_by_day
+    @entries_by_day = @entries.group_by { |entry| entry.created_at.to_date }
+    # by each entry by day, count yes and no
+    # insert data into yes_data and no_data
+    @yes_data = @entries_by_day.transform_values { |entries| entries.count { |entry| entry.action == "Yes" } }
+    @no_data = @entries_by_day.transform_values { |entries| entries.count { |entry| entry.action == "No" } }
+
+
+    @data = [{name: 'yes', data: @yes_data},{name: 'no', data: @no_data}]
   end
 end
