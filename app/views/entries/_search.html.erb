@@ -6,7 +6,6 @@
             class: "form-control searchbar",
             placeholder: "Search by keyword..."
         %>
-      <%= submit_tag "Search", name: "", class: "btn btn-primary" %>
       <%# Date range filter is from here %>
       <input type="text" name="datefilter" value="" />
       <script type="text/javascript">
@@ -20,7 +19,7 @@
           });
 
           $('input[name="datefilter"]').on('apply.daterangepicker', function(ev, picker) {
-              $(this).val(picker.startDate.format('YYYY/MM/DD') + ' - ' + picker.endDate.format('YYYY/MM/DD'));
+            $(this).val(picker.startDate.format('YYYY/MM/DD') + ' - ' + picker.endDate.format('YYYY/MM/DD'));
           });
 
           $('input[name="datefilter"]').on('cancel.daterangepicker', function(ev, picker) {
@@ -29,6 +28,7 @@
 
         });
       </script>
+      <%= submit_tag "Search", name: "", class: "btn btn-primary" %>
       <%# Date range filter ends here %>
     <% end %>
   </div>
