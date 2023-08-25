@@ -12,16 +12,16 @@
         <p class='badge text-bg-light'>votes: <%= post.votes %></p>
         <br>
         <%# Add a comment button here %>
-        <%= render "comments/new_comment", post: post %>
         <%# Add a comment button ends here %>
         <!-- See comments  -->
         <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#comment-display-<%=post.id%>">
           See comments
         </button>
-        <%= render "comments/comments_display",comments: post.comments, post: post %>
         <p>Current number of comments: <%= post.comments.count %></p>
         <!-- See comments end -->
       </div>
     </div>
+    <%= render "comments/new_comment", post: post %>
+    <%= render "comments/comments_display",comments: post.comments, post: post %>
   <% end %>
 </div>
