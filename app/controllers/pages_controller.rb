@@ -14,15 +14,17 @@ class PagesController < ApplicationController
     end
 
     @entries = Entry.where(user: current_user)
-    # turn entries into entries_by_day
+                    .where("created_at <= ? and created_at > ?", Date.today, Date.today - 30)
+                    .order(:created_at)
+
     @entries_by_day = @entries.group_by { |entry| entry.created_at.to_date }
-    # by each entry by day, count yes and no
-    # insert data into yes_data and no_data
+
     @yes_data = @entries_by_day.transform_values { |entries| entries.count { |entry| entry.action == "Yes" } }
     @no_data = @entries_by_day.transform_values { |entries| entries.count { |entry| entry.action == "No" } }
 
     @actions_data = [{ name: 'Opposite Action To Emotion', data: @yes_data }, { name: 'Acted Emotionally', data: @no_data }]
 
     @emotions_data = Entry.joins(:emotion).where(user: current_user).where(emotion: { parent_emotion: nil }).group(:name).count
+
   end
 end
