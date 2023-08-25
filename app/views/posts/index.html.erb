@@ -4,8 +4,8 @@
 <div class="container" data-controller="search-posts">
   <div class='search-bar p-3'>
     <%= form_with url: posts_path, method: :get, html: { class: "mb-4", data: { search_posts_target: 'form' }} do |f| %>
-      <%= f.label :title, "Look for a post title" %>
-      <%= f.text_field :title,
+            <%= f.label :title, "Look title or emotion" %>
+            <%= f.text_field :title,
                             class: "form-control",
                             value: params[:title],
                             data: {
