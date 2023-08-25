@@ -42,7 +42,7 @@ export default class extends Controller {
         points: [
           {
             x: day,
-            y: 3.5,
+            y: top,
             marker: {
               size: 6,
               fillColor: "#fff",
@@ -51,10 +51,11 @@ export default class extends Controller {
             },
             label: {
               borderColor: "#FF4560",
-              offsetY: 0,
+              offsetY: 300,
               style: {
                 color: "#fff",
-                background: "#F07167"
+                background: "#F07167",
+                fontSize: '9px'
               },
 
               text: "Today"

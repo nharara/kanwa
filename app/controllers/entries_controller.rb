@@ -48,7 +48,6 @@ class EntriesController < ApplicationController
   def entry_params
     params.require(:entry).permit(:situation, :action, :consequence, :specific_emotion_id)
   end
-
 end
 
 # make array of emotions from user input
