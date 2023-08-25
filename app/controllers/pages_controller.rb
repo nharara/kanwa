@@ -5,8 +5,8 @@ class PagesController < ApplicationController
   end
 
   def dashboard
-    days = ['Mo*', 'Tu*', 'We*', 'Th*', 'Fr*', 'Sa*', 'Su*', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa', 'Su']
-    @entries_by_date = current_user.entries.where("created_at <= ? and created_at > ?", Date.today, Date.today - 60).order(:created_at).group_by {|entry|entry.created_at.beginning_of_week.to_date }.to_h
+    days = [ 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa', 'Su']
+    @entries_by_date = current_user.entries.where("created_at <= ? and created_at > ?", Date.today, Date.today - 30).order(:created_at).group_by {|entry|entry.created_at.beginning_of_week.to_date }.to_h
     @entries_by_date.each do |week, entries|
       @entries_by_date[week] = days.map do |day|
         { x: day, y: entries.select { |entry| entry.created_at.strftime('%a')[0, 2] == day || (entry.created_at.strftime('%a')[0, 2] + '*') == day }.count}
@@ -14,15 +14,36 @@ class PagesController < ApplicationController
     end
 
     @entries = Entry.where(user: current_user)
-    # turn entries into entries_by_day
+                    .where("created_at <= ? and created_at > ?", Date.today, Date.today - 30)
+                    .order(:created_at)
+
     @entries_by_day = @entries.group_by { |entry| entry.created_at.to_date }
-    # by each entry by day, count yes and no
-    # insert data into yes_data and no_data
+
     @yes_data = @entries_by_day.transform_values { |entries| entries.count { |entry| entry.action == "Yes" } }
     @no_data = @entries_by_day.transform_values { |entries| entries.count { |entry| entry.action == "No" } }
 
     @actions_data = [{ name: 'Opposite Action To Emotion', data: @yes_data }, { name: 'Acted Emotionally', data: @no_data }]
 
     @emotions_data = Entry.joins(:emotion).where(user: current_user).where(emotion: { parent_emotion: nil }).group(:name).count
+
+    @greeting_message = greeting
+
+  end
+
+  def greeting
+    current_time = Time.now
+    case current_time.hour
+    when 5..11
+      "Good morning, "
+    when 12..16
+      "Good afternoon, "
+    when 17..20
+      "Good evening, "
+    when 21..23, 0..4
+      "Good night, "
+    else
+      "Hi "
+    end
   end
 end
+# 'Mo*', 'Tu*', 'We*', 'Th*', 'Fr*', 'Sa*', 'Su*',

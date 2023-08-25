@@ -21,7 +21,7 @@
   font-size: 14px;
   text-align: left;
   padding: 10px 10px 10px 10px;
-  border: 1px solid $green;
+  border: 1px solid $blue;
   border-radius: 16px;
   background-color: $white;
   text-align: center;
@@ -33,12 +33,12 @@
 }
 
 .category-item:has(.form-check-input:checked)>label {
-  background-color: $green;
-  border-color: $green;
+  background-color: $blue;
+  border-color: $blue;
 }
 
 .category-item>label {
-  color: $green;
+  color: $blue;
 }
 
 // #entry_situation_work+label {
