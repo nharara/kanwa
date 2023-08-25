@@ -9,15 +9,10 @@ class Entry < ApplicationRecord
 
   include PgSearch::Model
   pg_search_scope :search_by_sac,
-  against: [ :situation, :action, :consequence, :created_at ],
-  associated_against: {
-    emotion: [ :name ]
-  },
-  using: {
-    tsearch: { prefix: true }
-  }
+                  against: %i[situation action consequence created_at],
+                  associated_against: { emotion: [:name] },
+                  using: { tsearch: { prefix: true } }
 
   # include PgSearch::Model
   # multisearchable against: [:situation, :action, :consequence]
-
 end

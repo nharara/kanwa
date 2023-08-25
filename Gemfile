@@ -59,7 +59,9 @@ gem "pg_search"
 gem "chartkick"
 gem "groupdate"
 gem "rails_admin", "3.0"
+gem "wkhtmltopdf-binary"
 gem 'faker'
+
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
@@ -70,7 +72,7 @@ end
 group :development do
   # Use console on exceptions pages [https://github.com/rails/web-console]
   gem "web-console"
-  gem "wkhtmltopdf-binary"
+
   # Add speed badges [https://github.com/MiniProfiler/rack-mini-profiler]
   gem "rack-mini-profiler"
   gem 'bullet'
@@ -92,4 +94,3 @@ group :production do
 gem "wkhtmltopdf-heroku"
 
 end
-gem "sassc-rails"
