@@ -4,15 +4,15 @@
   <%# <%= render "carousel_post" %>
   <div class="charts-container row justify-content-center">
     <div class="chart-card col-12">
-      <h3 class="text-center">Entries in the last month</h3>
+      <h2 class="text-center">Entries in the last month</h3>
       <%= render "carousel_graph" %>
     </div>
     <div class="pie-card col-12">
-      <h3 class="text-center">Emotions in the last month</h3>
+      <h2 class="text-center">Emotions in the last month</h3>
       <%= render "emotions_pie_chart", data: @emotions_data%>
     </div>
     <div class="pie-card col-12">
-      <h3 class="text-center">Actions in the last month</h3>
+      <h2 class="text-center">Actions in the last month</h3>
       <%= render "action_bar_graph", data: @actions_data %>
     </div>
   </div>
