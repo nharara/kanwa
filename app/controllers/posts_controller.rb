@@ -15,10 +15,8 @@ class PostsController < ApplicationController
       format.html
       format.text { render partial: "posts/posts", locals: { posts: @posts }, formats: [:html] }
     end
-
     # @users = User.all
     # @comments = Comment.all
-
     @post = Post.new
   end
 
