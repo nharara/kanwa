@@ -1,3 +1,31 @@
 .card-header {
   margin-bottom: 0;
 }
+
+.cards-container {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+  background-color: rgba(255, 255, 255, 0.65);
+  backdrop-filter: blur(8px);
+  border: 0.5px solid white;
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding-top: 30px;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-bottom: 40px;
+  margin: 20px 15px;
+}
+
+.card {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background-color: rgba(255, 255, 255, 0.65);
+  backdrop-filter: blur(8px);
+  border: 0.5px solid white;
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding-top: 30px;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-bottom: 40px;
+  margin: 20px 15px;
+}
