@@ -1,35 +1,39 @@
 <div class="row justify-content-center">
-  <div class="col-sm-8 my-3">
-    <%= form_with url: entries_path, method: :get, class: "d-flex" do %>
-      <%= text_field_tag :query,
+  <div class="my-3">
+    <%= form_with url: entries_path, method: :get, class: "d-flex justify-content-center" do %>
+      <div class="row">
+        <div class="col-12 ">
+          <%= text_field_tag :query,
             params[:query],
             class: "form-control searchbar",
             placeholder: "Search by keyword..."
         %>
-      <%# Date range filter is from here %>
-      <input type="text" name="datefilter" value="" />
-      <script type="text/javascript">
-        $(function() {
-
-          $('input[name="datefilter"]').daterangepicker({
-            autoUpdateInput: false,
-              locale: {
-                cancelLabel: 'Clear'
-              }
-          });
-
-          $('input[name="datefilter"]').on('apply.daterangepicker', function(ev, picker) {
-            $(this).val(picker.startDate.format('YYYY/MM/DD') + ' - ' + picker.endDate.format('YYYY/MM/DD'));
-          });
-
-          $('input[name="datefilter"]').on('cancel.daterangepicker', function(ev, picker) {
-            $(this).val('');
-          });
-
-        });
-      </script>
-      <%= submit_tag "Search", name: "", class: "btn btn-primary" %>
-      <%# Date range filter ends here %>
+          <%# Date range filter is from here %>
+          <input type="text" class="form-control mt-1" name="datefilter" value="" placeholder="Pick a date" />
+        </div>
+        <div class="col-12 text-center mt-1"><%= submit_tag "Search", name: "", class: "btn btn-primary" %> </div>
+        <%# Date range filter ends here %>
+      </div>
     <% end %>
   </div>
 </div>
+<script type="text/javascript">
+  $(function() {
+
+    $('input[name="datefilter"]').daterangepicker({
+      autoUpdateInput: false,
+        locale: {
+          cancelLabel: 'Clear'
+        }
+    });
+
+    $('input[name="datefilter"]').on('apply.daterangepicker', function(ev, picker) {
+      $(this).val(picker.startDate.format('YYYY/MM/DD') + ' - ' + picker.endDate.format('YYYY/MM/DD'));
+    });
+
+    $('input[name="datefilter"]').on('cancel.daterangepicker', function(ev, picker) {
+      $(this).val('');
+    });
+
+  });
+</script>
