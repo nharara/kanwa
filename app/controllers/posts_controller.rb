@@ -8,6 +8,7 @@ class PostsController < ApplicationController
     @posts = @posts.includes([:emotion])
     @posts = @posts.includes([:user])
     @posts = @posts.includes([:comments])
+    @parent_emotions = Emotion.where(parent_emotion: nil)
 
     @comment = Comment.new
 
