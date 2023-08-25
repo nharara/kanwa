@@ -11,14 +11,14 @@ class PostsController < ApplicationController
     @parent_emotions = Emotion.where(parent_emotion: nil)
 
     @comment = Comment.new
+    @post = Post.new
+    @users = User.all
+    @comments = Comment.all
 
     respond_to do |format|
       format.html
       format.text { render partial: "posts/posts", locals: { posts: @posts }, formats: [:html] }
     end
-    # @users = User.all
-    # @comments = Comment.all
-    @post = Post.new
   end
 
   def create
