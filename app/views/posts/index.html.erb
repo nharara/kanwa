@@ -1,12 +1,11 @@
 <%# title  %>
 <h1 class="p-3">Posts</h1>
-
 <%# search bar %>
 <div class="container" data-controller="search-posts">
   <div class='search-bar p-3'>
     <%= form_with url: posts_path, method: :get, html: { class: "mb-4", data: { search_posts_target: 'form' }} do |f| %>
-            <%= f.label :title, "Look for a post title" %>
-            <%= f.text_field :title,
+      <%= f.label :title, "Look for a post title" %>
+      <%= f.text_field :title,
                             class: "form-control",
                             value: params[:title],
                             data: {
@@ -14,17 +13,14 @@
                               action: 'keyup->search-posts#update'
                             }
                             %>
-
     <% end %>
   </div>
-
   <%# add a new post %>
   <div class="container mb-2">
     <%= render 'new_post_form', post: @post, parent_emotions: @parent_emotions %>
   </div>
-
   <%# all the posts %>
   <div class="container" data-search-posts-target="list">
-    <%= render 'posts', posts: @posts %>
+    <%= render 'posts', posts: @posts, comment: @comment %>
   </div>
 </div>
