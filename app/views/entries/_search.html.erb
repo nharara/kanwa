@@ -8,12 +8,12 @@
         %>
       <%= submit_tag "Search", name: "", class: "btn btn-primary" %>
       <%# Date range filter is from here %>
-      <input type="text" name="datefilter" value="" />
+      <input type="text" name="datefilter" value="" placeholder="pick date" />
       <script type="text/javascript">
         $(function() {
 
           $('input[name="datefilter"]').daterangepicker({
-            autoUpdateInput: true,
+            autoUpdateInput: false,
               locale: {
                 cancelLabel: 'Clear'
               }
