@@ -6,7 +6,7 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <%= simple_form_for([post, @comment]) do |f| %>
+        <%= simple_form_for [post, @comment] do |f| %>
           <%= f.input :content, placeholder: 'Add a comment' %>
           <div class="modal-footer">
             <%= f.submit class: 'btn btn-primary'%>
