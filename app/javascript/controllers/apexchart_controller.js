@@ -30,8 +30,8 @@ export default class extends Controller {
     var heatmapOptions = {
       series: data,
       chart: {
-        height: 350,
-        width: '100%',
+        height: 200,
+        width: '60%',
         type: 'heatmap',
       },
       dataLabels: {

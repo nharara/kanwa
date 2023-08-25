@@ -1,6 +1,6 @@
 <div class="p-3">
   <h3>TUESDAY, AUGUST 22</h3>
-  <h1>Today</h1>
+  <h1> <%= "#{@greeting_message} #{current_user.full_name.split[0]}"  %></h1>
   <%# <%= render "carousel_post" %>
   <%= render "carousel_graph" %>
   <%= render "emotions_pie_chart", data: @emotions_data %>

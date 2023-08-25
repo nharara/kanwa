@@ -26,6 +26,24 @@ class PagesController < ApplicationController
 
     @emotions_data = Entry.joins(:emotion).where(user: current_user).where(emotion: { parent_emotion: nil }).group(:name).count
 
+    @greeting_message = greeting
+
+  end
+
+  def greeting
+    current_time = Time.now
+    case current_time.hour
+    when 5..11
+      "Good morning, "
+    when 12..16
+      "Good afternoon, "
+    when 17..20
+      "Good evening, "
+    when 21..23, 0..4
+      "Good night, "
+    else
+      "Hi "
+    end
   end
 end
 # 'Mo*', 'Tu*', 'We*', 'Th*', 'Fr*', 'Sa*', 'Su*',
