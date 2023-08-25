@@ -1,6 +1,6 @@
 <% @entries.each do |entry| %>
-  <div class="card text-bg-light mb-3 od">
-    <div class="card-header d-flex justify-content-between">
+  <div class="card card-trip text-bg-light mb-3 od">
+    <div class="card-header card-trip d-flex justify-content-between">
       <p><%= entry.emotion.name.capitalize %></p>
       <p><%= entry.created_at.strftime("%F") %></p>
     </div>
