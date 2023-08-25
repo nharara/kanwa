@@ -3,6 +3,7 @@ class EntriesController < ApplicationController
     @entries = Entry.all.order("created_at DESC")
     @entries = @entries.search_by_sac(params[:query]) if params[:query].present?
     @entries = @entries.where("created_at >= ? and created_at <= ?", params[:datefilter].split(" - ").first, params[:datefilter].split(" - ").last) if params[:datefilter].present?
+    # raise
     @entries = @entries.includes([:emotion])
     @entry = Entry.new
 

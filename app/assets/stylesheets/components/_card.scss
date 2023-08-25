@@ -2,6 +2,7 @@
   margin-bottom: 0;
 }
 
+
 .cards-container {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
   background-color: rgba(255, 255, 255, 0.65);
@@ -28,4 +29,12 @@
   padding-right: 20px;
   padding-bottom: 40px;
   margin: 20px 15px;
+
+.card-trip {
+  overflow: hidden;
+  background: $white;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+  position: relative;
+  border-radius: 8px;
+
 }

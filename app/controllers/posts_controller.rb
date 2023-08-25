@@ -3,26 +3,21 @@ class PostsController < ApplicationController
 
   def index
     @posts = Post.order(created_at: :desc, title: :asc)
-    @posts = @posts.where("title ILIKE ?", "%#{params[:title]}%") if params[:title].present?
+    # @posts = @posts.where("title ILIKE ?", "%#{params[:title]}%") if params[:title].present?
+    @posts = @posts.joins(:emotion).where("posts.title ILIKE ? OR emotions.name ILIKE ?", "%#{params[:title]}%", "%#{params[:title]}%") if params[:title].present?
     @posts = @posts.includes([:emotion])
     @posts = @posts.includes([:user])
+    @posts = @posts.includes([:comments])
+    @parent_emotions = Emotion.where(parent_emotion: nil)
+
+    @comment = Comment.new
+    @post = Post.new
+    @users = User.all
+    @comments = Comment.all
+
     respond_to do |format|
       format.html
       format.text { render partial: "posts/posts", locals: { posts: @posts }, formats: [:html] }
-    end
-
-    @users = User.all
-    @comments = Comment.all
-    @comment = Comment.new
-
-    @post = Post.new
-    @parent_emotions = Emotion.where(parent_emotion: nil)
-    if params[:query].present?
-      respond_to do |format|
-        format.html # Follow regular flow of Rails
-        @child_emotions = Emotion.find(params[:query]).child_emotions if params[:query]
-        format.text { render partial: "entries/new_child", locals: { emotions: @child_emotions }, formats: [:html] }
-      end
     end
   end
 

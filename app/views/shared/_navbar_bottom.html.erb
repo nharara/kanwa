@@ -1,6 +1,22 @@
 <div class="navbar-bottom footer">
-  <a href="/dashboard"><i class="fa-solid fa-house"></i></a>
-  <a href="/entries/new"><i class="fa-solid fa-plus"></i></a>
-  <a href="/entries"><i class="fa-regular fa-file-lines"></i></a>
-  <a href="/posts"><i class="fa-brands fa-forumbee"></i></a>
+  <%= link_to dashboard_path do %>
+    <% current_page?(controller: "/pages", action: "dashboard") ? icon_class = "icon-active" : icons_class = "" %>
+    <i class="fa-solid fa-house <%= icon_class %>"> </i>
+  <% end %>
+  <%= link_to new_entry_path do %>
+    <% current_page?(controller: "/entries", action: "new") ? icon_class = "icon-active" : icons_class = "" %>
+    <i class="fa-solid fa-plus <%= icon_class %>"> </i>
+  <% end %>
+  <%= link_to entries_path do %>
+    <% current_page?(controller: "/entries", action: "index") ? icon_class = "icon-active" : icons_class = "" %>
+    <i class="fa-regular fa-file-lines <%= icon_class %>"> </i>
+  <% end %>
+  <%= link_to posts_path do %>
+    <% current_page?(controller: "/posts", action: "index") ? icon_class = "icon-active" : icons_class = "" %>
+    <i class="fa-brands fa-forumbee <%= icon_class %>"> </i>
+  <% end %>
 </div>
+<%# <a href="/dashboard"><i class="fa-solid fa-house"></i></a> %>
+<%# <a href="/entries/new"><i class="fa-solid fa-plus"></i></a> %>
+<%# <a href="/entries"><i class="fa-regular fa-file-lines"></i></a> %>
+<%# <a href="/posts"><i class="fa-brands fa-forumbee"></i></a> %>
