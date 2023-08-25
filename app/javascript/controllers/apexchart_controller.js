@@ -42,7 +42,7 @@ export default class extends Controller {
         points: [
           {
             x: day,
-            y: 3.5,
+            y: 4.3,
             marker: {
               size: 6,
               fillColor: "#fff",
