@@ -3,9 +3,9 @@ import ApexCharts from 'apexcharts';
 
 // Connects to data-controller="heatmap"
 export default class extends Controller {
-  static values={keys: Array, datas: Array, info: String}
+  static values = { keys: Array, datas: Array, info: String }
 
-  static targets=["heatmap", "pie", "donut"]
+  static targets = ["heatmap", "pie", "donut"]
 
   connect() {
 
@@ -15,8 +15,8 @@ export default class extends Controller {
     const data = Array.from(Object.keys(info), (week) => {
       console.log(week);
       return {
-      name: '',
-      data: info[week]
+        name: '',
+        data: info[week]
       };
     })
 
@@ -30,9 +30,9 @@ export default class extends Controller {
     var heatmapOptions = {
       series: data,
       chart: {
-      height: 350,
-      width: '100%',
-      type: 'heatmap',
+        height: 350,
+        width: '100%',
+        type: 'heatmap',
       },
       dataLabels: {
         enabled: false,
@@ -42,7 +42,7 @@ export default class extends Controller {
         points: [
           {
             x: day,
-            y: 5.7,
+            y: 3.5,
             marker: {
               size: 6,
               fillColor: "#fff",
