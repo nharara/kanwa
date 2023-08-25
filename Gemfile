@@ -58,6 +58,8 @@ gem "simple_form", github: "heartcombo/simple_form"
 gem "pg_search"
 gem "chartkick"
 gem "groupdate"
+gem "rails_admin", "3.0"
+
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
@@ -90,3 +92,4 @@ group :production do
 gem "wkhtmltopdf-heroku"
 
 end
+gem "sassc-rails"
