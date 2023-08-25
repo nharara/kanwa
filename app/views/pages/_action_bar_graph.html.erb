@@ -1,1 +1,5 @@
-<%= column_chart @actions_data, stacked: true, colors: ["#8AB2BB","#EAB9B9"], library: { scales: {x: {ticks: {display: false}},y: {ticks: {display: false}} } }%>
+<%= column_chart @actions_data, stacked: true,
+                                colors: ["#8AB2BB","#EAB9B9"],
+                                library: { scales: {x: {ticks: {display: false}},y: {ticks: {display: false}} } },
+                                height: '200px',
+                                width: '100%'%>
