@@ -59,7 +59,6 @@ gem "pg_search"
 gem "chartkick"
 gem "groupdate"
 gem "rails_admin", "3.0"
-gem "wkhtmltopdf-binary"
 gem 'faker'
 
 
@@ -79,7 +78,7 @@ group :development do
   # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
   # gem "spring"
 
-
+  gem "wkhtmltopdf-binary"
 
 end
 

@@ -1,6 +1,8 @@
 class EntriesController < ApplicationController
+  before_action :authenticate_user!
+
   def index
-    @entries = Entry.all.order("created_at DESC")
+    @entries = Entry.where(user: current_user).order("created_at DESC")
     @entries = @entries.search_by_sac(params[:query]) if params[:query].present?
     @entries = @entries.where("created_at >= ? and created_at <= ?", params[:datefilter].split(" - ").first, params[:datefilter].split(" - ").last) if params[:datefilter].present?
     # raise
@@ -11,9 +13,10 @@ class EntriesController < ApplicationController
     respond_to do |format|
       format.html
       format.pdf do
-        render pdf: "kanwa #{date}", template: "entries/_entries", formats: [:html] # Excluding ".pdf" extension.
+        render pdf: "kanwa #{date}", template: "entries/_entries", formats: [:html]
       end
     end
+
   end
 
   def new
@@ -47,6 +50,11 @@ class EntriesController < ApplicationController
 
   def entry_params
     params.require(:entry).permit(:situation, :action, :consequence, :specific_emotion_id)
+  end
+
+  def pdf_params
+    params.require(:query)
+    params.require(:datafilter)
   end
 end
 
