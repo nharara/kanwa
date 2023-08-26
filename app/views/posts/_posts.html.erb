@@ -4,7 +4,9 @@
     <div class="card card-trip text-bg-light mb-3 od p-0">
       <div class="card-header d-flex justify-content-between">
         <h5><%= post.title %></h5>
-        <p class='badge text-bg-primary'><%= post.emotion.name %></p>
+        <div>
+          <p class='badge text-bg-primary'><%= post.emotion.name %></p>
+        </div>
       </div>
       <div class="card-body">
         <h5 class="card-title"><%= post.user.nickname %></h5>
@@ -17,7 +19,11 @@
         <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#comment-display-<%=post.id%>">
           See comments
         </button>
-        <p>Current number of comments: <%= post.comments.count %></p>
+        <% if post.comments.count >= 1 %>
+          <p class='badge text-bg-success'>Current number of comments: <%= post.comments.count %></p>
+        <% else %>
+          <p class='badge text-bg-info'>No comments yet.</p>
+        <% end %>
         <!-- See comments end -->
       </div>
     </div>

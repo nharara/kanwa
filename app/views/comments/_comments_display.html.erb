@@ -7,16 +7,20 @@
       </div>
       <div class="modal-body">
         <%# Modal Test %>
-        <% comments.each do |comment| %>
-          <div class="card text-bg-light mb-3 od">
-            <div class="card-header d-flex justify-content-between">
-              <p><%= post.user.nickname %></p>
-              <p><%= comment.created_at.strftime("%F") %></p>
+        <% if post.comments.count >= 1 %>
+          <% comments.each do |comment| %>
+            <div class="card text-bg-light mb-3 od">
+              <div class="card-header d-flex justify-content-between">
+                <p><%= post.user.nickname %></p>
+                <p><%= comment.created_at.strftime("%F") %></p>
+              </div>
+              <div class="card-body justify-content-center">
+                <p class="card-text"><%= comment.content %></p>
+              </div>
             </div>
-            <div class="card-body justify-content-center">
-              <p class="card-text"><%= comment.content %></p>
-            </div>
-          </div>
+          <% end %>
+        <% else %>
+          <p>Be the first to comment!</p>
         <% end %>
         <%# Modal Text %>
       </div>
