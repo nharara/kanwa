@@ -5,7 +5,7 @@ class PagesController < ApplicationController
   end
 
   def dashboard
-    days = [ 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa', 'Su']
+    days = ['Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa', 'Su']
     @entries_by_date = current_user.entries.where("created_at <= ? and created_at > ?", Date.today, Date.today - 30).order(:created_at).group_by {|entry|entry.created_at.beginning_of_week.to_date }.to_h
     @entries_by_date.each do |week, entries|
       @entries_by_date[week] = days.map do |day|
@@ -24,7 +24,16 @@ class PagesController < ApplicationController
 
     @actions_data = [{ name: 'Opposite Action To Emotion', data: @yes_data }, { name: 'Acted Emotionally', data: @no_data }]
 
-    @emotions_data = Entry.joins(:emotion).where(user: current_user).where(emotion: { parent_emotion: nil }).group(:name).count
+    @emotions_data = Emotion
+                            .joins(child_emotions: { entries: :user })
+                            .where('users.id' => current_user.id)
+                            .where('entries.created_at BETWEEN ? AND ?', Date.today - 30.days, Date.today)
+                            .group('emotions.name')
+                            .select('emotions.name, COUNT(entries.id) as entry_count')
+                            .each_with_object({}) do |emotion, hash|
+                              hash[emotion.name] = emotion.entry_count
+                            end
+
 
     @greeting_message = greeting
 
