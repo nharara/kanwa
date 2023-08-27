@@ -9,6 +9,8 @@ class PostsController < ApplicationController
     @posts = @posts.includes([:user])
     @posts = @posts.includes([:comments])
     @parent_emotions = Emotion.where(parent_emotion: nil)
+    @pagy, @posts = pagy(@posts)
+
 
     @comment = Comment.new
     @post = Post.new
