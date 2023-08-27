@@ -8,6 +8,8 @@ class EntriesController < ApplicationController
     # raise
     @entries = @entries.includes([:emotion])
     @entry = Entry.new
+    @pagy, @entries = pagy(@entries)
+
 
     date = Date.today
     respond_to do |format|
