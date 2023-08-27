@@ -18,7 +18,7 @@ export default class extends Controller {
       inputField.setAttribute('type', 'text');
       inputField.setAttribute('name', 'entry[situation]');
       inputField.setAttribute('id', 'entry_situation');
-      inputField.setAttribute('value', `${selectedSituation}- `);
+      inputField.setAttribute('value', `${selectedSituation}: `);
 
       textSituationTarget.innerHTML = '';
       textSituationTarget.appendChild(inputField);
