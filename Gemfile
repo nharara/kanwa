@@ -93,3 +93,5 @@ group :production do
 gem "wkhtmltopdf-heroku"
 
 end
+
+gem "pagy", "~> 6.0"
