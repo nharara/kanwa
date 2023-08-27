@@ -14,7 +14,7 @@ class PagesController < ApplicationController
     end
 
     @entries = Entry.where(user: current_user)
-                    .where("created_at <= ? and created_at > ?", Date.today.beginning_of_day, Date.today.end_of_day - 30)
+                    .where('entries.created_at BETWEEN ? AND ?', Date.today.beginning_of_day - 30.days, Date.today.end_of_day)
                     .order(:created_at)
 
     @entries_by_day = @entries.group_by { |entry| entry.created_at.to_date }
@@ -33,7 +33,6 @@ class PagesController < ApplicationController
                             .each_with_object({}) do |emotion, hash|
                               hash[emotion.name] = emotion.entry_count
                             end
-
 
     @greeting_message = greeting
 
