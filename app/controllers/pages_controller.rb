@@ -6,7 +6,7 @@ class PagesController < ApplicationController
 
   def dashboard
     days = ['Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa', 'Su']
-    @entries_by_date = current_user.entries.where("created_at <= ? and created_at > ?", Date.today, Date.today - 30).order(:created_at).group_by {|entry|entry.created_at.beginning_of_week.to_date }.to_h
+    @entries_by_date = current_user.entries.where('created_at BETWEEN ? AND ?', Date.today.beginning_of_day - 30.days, Date.today.end_of_day).order(:created_at).group_by {|entry|entry.created_at.beginning_of_week.to_date }.to_h
     @entries_by_date.each do |week, entries|
       @entries_by_date[week] = days.map do |day|
         { x: day, y: entries.select { |entry| entry.created_at.strftime('%a')[0, 2] == day || (entry.created_at.strftime('%a')[0, 2] + '*') == day }.count}
@@ -14,7 +14,7 @@ class PagesController < ApplicationController
     end
 
     @entries = Entry.where(user: current_user)
-                    .where("created_at <= ? and created_at > ?", Date.today, Date.today - 30)
+                    .where("created_at <= ? and created_at > ?", Date.today.beginning_of_day, Date.today.end_of_day - 30)
                     .order(:created_at)
 
     @entries_by_day = @entries.group_by { |entry| entry.created_at.to_date }
@@ -27,7 +27,7 @@ class PagesController < ApplicationController
     @emotions_data = Emotion
                             .joins(child_emotions: { entries: :user })
                             .where('users.id' => current_user.id)
-                            .where('entries.created_at BETWEEN ? AND ?', Date.today - 30.days, Date.today)
+                            .where('entries.created_at BETWEEN ? AND ?', Date.today.beginning_of_day - 30.days, Date.today.end_of_day)
                             .group('emotions.name')
                             .select('emotions.name, COUNT(entries.id) as entry_count')
                             .each_with_object({}) do |emotion, hash|
