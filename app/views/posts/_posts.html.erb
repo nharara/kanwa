@@ -17,13 +17,8 @@
         <%# Add a comment button ends here %>
         <!-- See comments  -->
         <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#comment-display-<%=post.id%>">
-          See comments
+          See comments (<%= post.comments.count %>)
         </button>
-        <% if post.comments.count >= 1 %>
-          <p class='badge text-bg-success'>Current number of comments: <%= post.comments.count %></p>
-        <% else %>
-          <p class='badge text-bg-info'>No comments yet.</p>
-        <% end %>
         <!-- See comments end -->
       </div>
     </div>
