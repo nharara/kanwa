@@ -6,6 +6,9 @@ Rails.application.routes.draw do
   resources :entries, only: %i[index new create edit update delete]
 
   resources :posts, only: %i[index create update delete] do
+    member do
+      post 'upvote'
+    end
     resources :comments, only: %i[create update delete]
   end
 

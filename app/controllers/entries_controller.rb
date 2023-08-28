@@ -3,6 +3,7 @@ class EntriesController < ApplicationController
 
   def index
     @entries = Entry.where(user: current_user).order("created_at DESC")
+
     if params[:query].present?
       @entries = @entries.search_by_sac(params[:query])
 
@@ -17,12 +18,14 @@ class EntriesController < ApplicationController
       @yes_percentage = ((@yes_action.fdiv(@total))*100).round
 
     end
-    @entries = @entries.where("created_at >= ? and created_at <= ?", params[:datefilter].split(" - ").first, params[:datefilter].split(" - ").last) if params[:datefilter].present?
+    @entries = @entries.search_by_sac(params[:query]) if params[:query].present?
+    @entries = @entries.where("created_at >= ? and created_at <= ?", *params[:datefilter].split(" to ")) if params[:datefilter].present?
+   
     # raise
+    @parent_emotions = Emotion.where(parent_emotion: nil)
     @entries = @entries.includes([:emotion])
     @entry = Entry.new
     @pagy, @entries = pagy(@entries)
-
 
     date = Date.today
     respond_to do |format|
@@ -44,11 +47,10 @@ class EntriesController < ApplicationController
   end
 
   def create
-    @entry = Entry.new
-    @entry.situation = entry_params[:situation]
+    @entry = Entry.new(entry_params.except(:specific_emotion_id))
+
     @entry.emotion = Emotion.find(entry_params[:specific_emotion_id])
-    @entry.action = entry_params[:action]
-    @entry.consequence = entry_params[:consequence]
+
     @entry.user = current_user
     if @entry.save
       redirect_to entries_path
@@ -63,7 +65,7 @@ class EntriesController < ApplicationController
   private
 
   def entry_params
-    params.require(:entry).permit(:situation, :action, :consequence, :specific_emotion_id)
+    params.require(:entry).permit(:situation, :action, :consequence, :specific_emotion_id, :situation_details)
   end
 
   def pdf_params

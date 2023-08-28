@@ -7,7 +7,9 @@
   </head>
   <body>
     <div id="header">
-      <h1>Entries list <%= Date.today %></h1>
+      <h1><%=current_user.full_name %></h1>
+      <h3>Entries:</h3>
+      <h3 class='date'><%= params[:datefilter].present? ? params[:datefilter].gsub(/\s+/, '').gsub('-', '--') : "Created at: #{Date.today}"%></h3>
     </div>
     <div id="content">
       <%= yield %>

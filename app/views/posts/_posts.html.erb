@@ -8,16 +8,23 @@
           <p class='badge text-bg-primary'><%= post.emotion.name %></p>
         </div>
       </div>
-      <div class="card-body">
+      <div class="card-body" data-controller='voting' data-voting-votes-value="<%=post.votes%>">
         <h5 class="card-title"><%= post.user.nickname %></h5>
         <p class="card-text"><%= post.content %></p>
-        <p class='badge text-bg-light'>votes: <%= post.votes %></p>
+        <div class="d-flex">
+        <%= button_to 'feel related', upvote_post_path(post), class: 'badge text-bg-light mx-2', data: {action: "click->voting#upvote"}%>
+
+        <p class='d-inline-block'>
+          <strong data-voting-target='update'><%= post.votes %></strong>
+        </p>
+        </div>
+
         <br>
         <%# Add a comment button here %>
         <%# Add a comment button ends here %>
         <!-- See comments  -->
-        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#comment-display-<%=post.id%>">
-          See comments (<%= post.comments.count %>)
+        <button id="comments_button">
+          <i class="fa-regular fa-message fa-xl" data-bs-toggle="modal" data-bs-target="#comment-display-<%=post.id%>"> <%= post.comments.count %> </i>
         </button>
         <!-- See comments end -->
       </div>
