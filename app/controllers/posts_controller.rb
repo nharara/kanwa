@@ -11,7 +11,6 @@ class PostsController < ApplicationController
     @parent_emotions = Emotion.where(parent_emotion: nil)
     @pagy, @posts = pagy(@posts)
 
-
     @comment = Comment.new
     @post = Post.new
     @users = User.all
@@ -33,6 +32,11 @@ class PostsController < ApplicationController
     else
       render :index, status: :unprocesable_entity
     end
+  end
+
+  def upvote
+    @post = Post.find(params[:id])
+    @post.upvote
   end
 
   private

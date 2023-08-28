@@ -6,6 +6,6 @@ class Post < ApplicationRecord
   validates :content, presence: true, length: { minimum: 5, maximum: 200 }
 
   def upvote
-    post.votes += 1
+    update(votes: votes + 1)
   end
 end
