@@ -13,6 +13,8 @@ class PagesController < ApplicationController
       end
     end
 
+
+
     @entries = Entry.where(user: current_user)
                     .where('entries.created_at BETWEEN ? AND ?', Date.today.beginning_of_day - 30.days, Date.today.end_of_day)
                     .order(:created_at)
@@ -22,17 +24,32 @@ class PagesController < ApplicationController
     @yes_data = @entries_by_day.transform_values { |entries| entries.count { |entry| entry.action == "Yes" } }
     @no_data = @entries_by_day.transform_values { |entries| entries.count { |entry| entry.action == "No" } }
 
-    @actions_data = [{ name: 'Opposite Action To Emotion', data: @yes_data }, { name: 'Acted Emotionally', data: @no_data }]
+    @actions_data = [{ name: 'Controlled action', data: @yes_data }, { name: 'Uncontrolled action', data: @no_data }]
 
     @emotions_data = Emotion
                             .joins(child_emotions: { entries: :user })
-                            .where('users.id' => current_user.id)
+                            .where('entries.user_id' => current_user.id)
                             .where('entries.created_at BETWEEN ? AND ?', Date.today.beginning_of_day - 30.days, Date.today.end_of_day)
                             .group('emotions.name')
                             .select('emotions.name, COUNT(entries.id) as entry_count')
                             .each_with_object({}) do |emotion, hash|
                               hash[emotion.name] = emotion.entry_count
                             end
+
+    @top_emotion = Emotion
+                          .joins(child_emotions: { entries: :user })
+                          .where('users.id' => current_user.id)
+                          .where('entries.created_at BETWEEN ? AND ?', Date.today.beginning_of_day - 30.days, Date.today.end_of_day)
+                          .group('emotions.name')
+                          .select('emotions.name, COUNT(entries.id) as entry_count')
+                          .order('entry_count DESC')
+                          .first
+
+
+    @top_situation = @top_emotion.child_entries.where(user: current_user).group(:situation).count.max_by{ |situation, count| count }.first
+
+    @top_emotion_name = @top_emotion.name
+    # @top_emotion_situation = @top_emotion.situation
 
     @greeting_message = greeting
 

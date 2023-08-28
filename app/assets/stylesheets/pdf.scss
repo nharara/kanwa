@@ -13,27 +13,27 @@ $gray: #454F5C;
 $light-gray: #F8F8F8;
 $font: #161a1e;
 
-body{
-  margin:0;
+body {
+  margin: 0;
   padding: 0;
   color: $font
 }
 
-h1{
+h1 {
   text-align: center;
   font-family: $headers-font;
   margin-top: 2em;
 }
 
-.date{
- text-align: right;
- padding-right: 1em;
- display: inline-block;
- margin-left: 55%;
- margin-bottom: 0;
+.date {
+  text-align: right;
+  padding-right: 1em;
+  display: inline-block;
+  margin-left: 55%;
+  margin-bottom: 0;
 }
 
-h3{
+h3 {
   font-family: $headers-font;
   padding-left: 1em;
   display: inline-block;
@@ -41,46 +41,43 @@ h3{
   font-size: 20px;
 }
 
-.card{
+.card {
   border-radius: 5px;
-  margin-top:1em;
+  margin-top: 1em;
   margin-bottom: 1em;
   padding: 1em;
   font-size: 18px;
   background-color: rgb(229, 227, 227);
-  box-shadow: 1px 1px 3px gray ;
+  box-shadow: 1px 1px 3px gray;
   page-break-inside: avoid;
   padding-top: 0;
   background-color: #f2d49f;
 }
 
-.card-header{
+.card-header {
   padding: 0 1em;
-  display:flex;
+  display: flex;
   align-items: center;
   font-size: 22px;
   font-family: $headers-font;
-  background-color:#d7b377;
+  background-color: #d7b377;
   margin-left: -0.9em;
   margin-right: -0.9em;
   border-radius: 5px 5px 0 0;
   font-weight: 400;
   text-shadow: $gray;
 
-  p:first-child{
-    display:inline-block;
-  }
-  p:last-child{
+  p:first-child {
     display: inline-block;
     margin-left: 70%;
     font-size: 20px;
   }
 }
 
-.card-body{
+.card-body {
   font-family: $body-font;
 
-  p:nth-child(2){
+  p:nth-child(2) {
     text-indent: 1em;
   }
 }

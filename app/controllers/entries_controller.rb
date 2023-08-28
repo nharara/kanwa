@@ -6,10 +6,10 @@ class EntriesController < ApplicationController
     @entries = @entries.search_by_sac(params[:query]) if params[:query].present?
     @entries = @entries.where("created_at >= ? and created_at <= ?", *params[:datefilter].split(" to ")) if params[:datefilter].present?
     # raise
+    @parent_emotions = Emotion.where(parent_emotion: nil)
     @entries = @entries.includes([:emotion])
     @entry = Entry.new
     @pagy, @entries = pagy(@entries)
-
 
     date = Date.today
     respond_to do |format|
