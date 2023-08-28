@@ -11,16 +11,20 @@ class EntriesController < ApplicationController
 
       g2 = g1.transform_values {|entries| entries.group_by {|entry| entry.situation.split(":").first}}
       @g3 = g2.transform_values {|situations| situations.transform_values {|entries| entries.count}}
-
-      @action = @entries.group_by {|entry| entry.action}.transform_values {|value| value.count}
+      @highest_value_situation = @g3.values.first.sort_by {|key, value| value}.last.first
+      @action = @entries.where("situation ilike ?", "#{@highest_value_situation}%").group_by {|entry| entry.action}.transform_values {|value| value.count}
+      @action["Yes"] ||= 0
+      @action["No"] ||= 0
       @total = @action.values.sum
       @yes_action = @action["Yes"]
       @yes_percentage = ((@yes_action.fdiv(@total))*100).round
+      # current_user.entries.where("situation ilike ?", "relationship%").pluck(:action)
 
+      # raise
     end
     @entries = @entries.search_by_sac(params[:query]) if params[:query].present?
     @entries = @entries.where("created_at >= ? and created_at <= ?", *params[:datefilter].split(" to ")) if params[:datefilter].present?
-   
+
     # raise
     @parent_emotions = Emotion.where(parent_emotion: nil)
     @entries = @entries.includes([:emotion])
