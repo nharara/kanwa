@@ -6,7 +6,6 @@
   <%# This is the end of the dropdown code %>
   <%# <%= render "search-category" %>  <%# Change render name to correct one later  %>
   <div class='entries'>
-    <%= link_to 'generate pdf', entries_path(params.permit(:query, :datefilter).merge(format: :pdf)), target: "_blank", class: 'btn btn-success p-2 my-3'   %>
     <%# Pagy %>
     <div class="d-flex justify-content-center pt-3">
       <div class="row">
@@ -15,6 +14,14 @@
         </div>
       </div>
     </div>
+
+  <div class='py-0 px-4 mt-n4 text-end'>
+
+  <%= link_to entries_path(params.permit(:query, :datefilter).merge(format: :pdf)), target: "_blank" do %>
+    <i class="fa-regular fa-file-pdf col-1 fs-3"></i>
+  <%end%>
+
+  </div>
     <%# Entries %>
     <%= render 'entries', entries: @entries %>
   </div>
