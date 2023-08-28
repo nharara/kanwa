@@ -5,6 +5,13 @@
   <%= render "search", emotions: @parent_emotions %>
   <%# This is the end of the dropdown code %>
   <%# <%= render "search-category" %>  <%# Change render name to correct one later  %>
+  <% if @g3.present? %>
+    <div class="container">
+      <h2> Most common situation : <%= @g3.values.first.max_by {|situation, count| count}[0] %></h2>
+      <h2> Count : <%= @g3.values.first.max_by {|situation, count| count}[1] %></h2>
+      <h3> Control rate : <%= @yes_percentage %>% </h3>
+    </div>
+  <% end %>
   <div class='entries'>
     <%# Pagy %>
     <div class="d-flex justify-content-center pt-3">
