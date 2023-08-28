@@ -45,3 +45,4 @@ pin "robust-predicates", to: "https://ga.jspm.io/npm:robust-predicates@3.0.2/ind
 pin "apexcharts", to: "https://ga.jspm.io/npm:apexcharts@3.41.1/dist/apexcharts.common.js"
 pin "chartkick", to: "chartkick.js"
 pin "Chart.bundle", to: "Chart.bundle.js"
+pin "tom-select", to: "https://ga.jspm.io/npm:tom-select@2.2.2/dist/js/tom-select.complete.js"
