@@ -4,8 +4,7 @@ class EntriesController < ApplicationController
   def index
     @entries = Entry.where(user: current_user).order("created_at DESC")
     @entries = @entries.search_by_sac(params[:query]) if params[:query].present?
-    @entries = @entries.where("created_at >= ? and created_at <= ?", params[:datefilter].split(" - ").first, params[:datefilter].split(" - ").last) if params[:datefilter].present?
-    @entries = @entries.where(emotion_id: params[:emotion_id]) if params[:emotion_id].present?
+    @entries = @entries.where("created_at >= ? and created_at <= ?", *params[:datefilter].split(" to ")) if params[:datefilter].present?
     # raise
     @parent_emotions = Emotion.where(parent_emotion: nil)
     @entries = @entries.includes([:emotion])

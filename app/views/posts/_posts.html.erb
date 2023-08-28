@@ -23,8 +23,8 @@
         <%# Add a comment button here %>
         <%# Add a comment button ends here %>
         <!-- See comments  -->
-        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#comment-display-<%=post.id%>">
-          See comments (<%= post.comments.count %>)
+        <button id="comments_button">
+          <i class="fa-regular fa-message fa-xl" data-bs-toggle="modal" data-bs-target="#comment-display-<%=post.id%>"> <%= post.comments.count %> </i>
         </button>
         <!-- See comments end -->
       </div>
