@@ -6,10 +6,11 @@
           <%= text_field_tag :query,
             params[:query],
             class: "form-control searchbar",
-            placeholder: "Search by keyword..."
+            placeholder: 'Search by keyword...'
           %>
           <%# Date range filter is from here %>
-          <input type="text" class="form-control mt-1" name="datefilter" value="" placeholder="Pick a date" />
+          <div class="d-flex justify-content-center form-control">
+            <%= text_field_tag :datefilter, params[:datefilter], data:{controller: "flatpickr"} %></div>
         </div>
         <div class="col-12 text-center mt-1"><%= submit_tag "Search", name: "", class: "btn btn-primary" %> </div>
         <%# Date range filter ends here %>
@@ -17,23 +18,3 @@
     <% end %>
   </div>
 </div>
-<script type="text/javascript">
-  $(function() {
-
-    $('input[name="datefilter"]').daterangepicker({
-      autoUpdateInput: false,
-        locale: {
-          cancelLabel: 'Clear'
-        }
-    });
-
-    $('input[name="datefilter"]').on('apply.daterangepicker', function(ev, picker) {
-      $(this).val(picker.startDate.format('YYYY/MM/DD') + ' - ' + picker.endDate.format('YYYY/MM/DD'));
-    });
-
-    $('input[name="datefilter"]').on('cancel.daterangepicker', function(ev, picker) {
-      $(this).val('');
-    });
-
-  });
-</script>
