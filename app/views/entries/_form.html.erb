@@ -6,10 +6,9 @@
             collection_wrapper_tag: 'div',
             collection_wrapper_class: 'category-wrapper',
             item_wrapper_class: 'category-item',
-            input_html: { data: { input_box_target: "situation", action: "change->input-box#toggleOtherSituation" }, class: 'category-selector' },
+            input_html: { class: 'category-selector' },
             collection: Entry::SITUATIONS %>
-    <div id="other_situation_input" data-input-box-target="textSituation">
-    </div>
+    <%= f.input :situation_details %>
     <%= f.association :emotion,
                 collection: emotions,
                 as: :radio_buttons,
