@@ -29,7 +29,7 @@ h1{
  text-align: right;
  padding-right: 1em;
  display: inline-block;
- margin-left: 70%;
+ margin-left: 55%;
  margin-bottom: 0;
 }
 
@@ -51,7 +51,7 @@ h3{
   box-shadow: 1px 1px 3px gray ;
   page-break-inside: avoid;
   padding-top: 0;
-  background-color: #a1ced8;;
+  background-color: #f2d49f;
 }
 
 .card-header{
@@ -60,7 +60,7 @@ h3{
   align-items: center;
   font-size: 22px;
   font-family: $headers-font;
-  background-color: $blue;
+  background-color:#d7b377;
   margin-left: -0.9em;
   margin-right: -0.9em;
   border-radius: 5px 5px 0 0;
@@ -72,7 +72,7 @@ h3{
   }
   p:last-child{
     display: inline-block;
-    margin-left: 75%;
+    margin-left: 70%;
     font-size: 20px;
   }
 }
