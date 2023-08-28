@@ -3,7 +3,20 @@ class EntriesController < ApplicationController
 
   def index
     @entries = Entry.where(user: current_user).order("created_at DESC")
-    @entries = @entries.search_by_sac(params[:query]) if params[:query].present?
+    if params[:query].present?
+      @entries = @entries.search_by_sac(params[:query])
+
+      g1 = @entries.group_by {|entry| entry.emotion}
+
+      g2 = g1.transform_values {|entries| entries.group_by {|entry| entry.situation.split(":").first}}
+      @g3 = g2.transform_values {|situations| situations.transform_values {|entries| entries.count}}
+
+      @action = @entries.group_by {|entry| entry.action}.transform_values {|value| value.count}
+      @total = @action.values.sum
+      @yes_action = @action["Yes"]
+      @yes_percentage = ((@yes_action.fdiv(@total))*100).round
+
+    end
     @entries = @entries.where("created_at >= ? and created_at <= ?", params[:datefilter].split(" - ").first, params[:datefilter].split(" - ").last) if params[:datefilter].present?
     # raise
     @entries = @entries.includes([:emotion])
@@ -18,7 +31,6 @@ class EntriesController < ApplicationController
         render pdf: "kanwa #{date}", template: "entries/_entries", formats: [:html]
       end
     end
-
   end
 
   def new
@@ -58,6 +70,22 @@ class EntriesController < ApplicationController
     params.require(:query)
     params.require(:datafilter)
   end
-end
 
+  def action_count(entries)
+    yes = 0
+    no = 0
+    entries.each do |entry|
+      if entry.action == "Yes"
+         yes += 1
+      else
+        no +=1
+      end
+    end
+    return{yes: yes, no: no}
+  end
+end
 # make array of emotions from user input
+
+# group the entries by emotion
+# for each entry in each emotion we find the situation
+# count the sitaution, display
