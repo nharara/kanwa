@@ -5,8 +5,12 @@
       <p><%= entry.created_at.strftime("%F") %></p>
     </div>
     <div class="card-body justify-content-center">
-      <p class="card-text">Situation: <%= entry.situation.capitalize %></p>
-      <p class="card-text">Did I act through my emotions: <%= entry.action %></p>
+      <p class="card-text">
+        <b>Situation:</b>
+        <br>
+        <p class="indented"><%= entry.situation.capitalize %></p>
+      </p>
+      <p class="card-text">Did I control my actions: <%= entry.action %></p>
       <p class="card-text">Turned out well: <%= entry.consequence %></p>
     </div>
   </div>
