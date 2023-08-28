@@ -5,10 +5,10 @@
   <%= render "search", emotions: @parent_emotions %>
   <%# This is the end of the dropdown code %>
   <%# <%= render "search-category" %>  <%# Change render name to correct one later  %>
-  <% if @g3.present? %>
+  <% if !Entry::SITUATIONS.include?(params[:query]) %>
     <div class="container">
-      <h2> Most common situation : <%= @g3.values.first.max_by {|situation, count| count}[0] %></h2>
-      <h2> Count : <%= @g3.values.first.max_by {|situation, count| count}[1] %></h2>
+      <h2> Most common situation : <%= @highest_value_situation %></h2>
+      <%# <h2> Count : <%= @g3.values.first.max_by {|situation, count| count}[1] %>
       <h3> Control rate : <%= @yes_percentage %>% </h3>
     </div>
   <% end %>
@@ -21,14 +21,11 @@
         </div>
       </div>
     </div>
-
-  <div class='py-0 px-4 mt-n4 text-end'>
-
-  <%= link_to entries_path(params.permit(:query, :datefilter).merge(format: :pdf)), target: "_blank" do %>
-    <i class="fa-regular fa-file-pdf col-1 fs-3"></i>
-  <%end%>
-
-  </div>
+    <div class='py-0 px-4 mt-n4 text-end'>
+      <%= link_to entries_path(params.permit(:query, :datefilter).merge(format: :pdf)), target: "_blank" do %>
+        <i class="fa-regular fa-file-pdf col-1 fs-3"></i>
+      <%end%>
+    </div>
     <%# Entries %>
     <%= render 'entries', entries: @entries %>
   </div>
