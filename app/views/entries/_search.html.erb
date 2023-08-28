@@ -9,8 +9,11 @@
             placeholder: 'Search by keyword...'
           %>
           <%# Date range filter is from here %>
-          <div class="d-flex justify-content-center form-control">
-            <%= text_field_tag :datefilter, params[:datefilter], data:{controller: "flatpickr"} %></div>
+          <div class="d-flex justify-content-center">
+            <label for="datefilter">📅
+              <%= hidden_field_tag :datefilter, params[:datefilter], data:{controller: "flatpickr"}, class:"d-none"%>
+            </label>
+          </div>
         </div>
         <div class="col-12 text-center mt-1"><%= submit_tag "Search", name: "", class: "btn btn-primary" %> </div>
         <%# Date range filter ends here %>
