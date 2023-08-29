@@ -1,5 +1,10 @@
 .card-header {
   margin-bottom: 0;
+  background: $white;
+}
+
+.card-body {
+  background: $white;
 }
 
 
@@ -38,4 +43,4 @@
   position: relative;
   border-radius: 8px;
 
-  } 
+}

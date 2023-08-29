@@ -1,19 +1,21 @@
 <div class="row justify-content-center">
-  <div class="my-3">
+  <div class="my-3 ml-3">
     <%= form_with url: entries_path, method: :get, class: "d-flex justify-content-center" do %>
       <div class="row">
         <div class="col-12 ">
           <%= text_field_tag :query,
-            params[:query],
-            class: "form-control searchbar",
-            placeholder: 'Search by keyword...'
-          %>
+        params[:query],
+        class: "form-control searchbar",
+        placeholder: 'Search by keyword...'
+        %>
           <%# Date range filter is from here %>
-          <div class="d-flex justify-content-center form-control">
-            <%= text_field_tag :datefilter, params[:datefilter], data:{controller: "flatpickr"} %></div>
         </div>
-        <div class="col-12 text-center mt-1"><%= submit_tag "Search", name: "", class: "btn btn-primary" %> </div>
+        <div class="col-12 text-center mt-2"><%= submit_tag "Search", name: "", class: "btn btn-primary" %> </div>
         <%# Date range filter ends here %>
+      </div>
+      <div id="calendar"><label for="datefilter" i class="fa-regular fa-calendar fa-2xl">
+          <%= hidden_field_tag :datefilter, params[:datefilter], data:{controller: "flatpickr"}, class:"d-none"%>
+        </label>
       </div>
     <% end %>
   </div>

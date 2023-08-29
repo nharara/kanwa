@@ -1,24 +1,18 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <div class="container-fluid">
-    <%= link_to "#", class: "navbar-brand" do %>
-      <i class="fa-solid fa-k" style="color: #8AB2BB;"></i>
-    <% end %>
-    <button class="navbar-toggler rounded-pill" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
+<nav class='navigation'>
+    <a href="/dashboard" class="navbar-brand">
+      <i class="fa-solid fa-k fs-2 me-1" style="color: #8AB2BB;"></i>anwa
+    </a>
+    <div class="btn-group dropstart">
+    <button class="button text-primary" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+      <i class="fa-solid fa-bars fs-4"></i>
     </button>
-    <div class="collapse navbar-collapse" id="navbarNavDropdown">
-      <div class=" d-flex justify-content-end">
-        <ul class="navbar-nav">
-          <li class="nav-item">
-            <% if user_signed_in? %>
-              <li><%= link_to"logout", destroy_user_session_path, data: {turbo_method: :delete}, class: "dropdown-item nav-link"%></li>
-            <% else %>
-              <li><%= link_to "Sign in", user_session_path, class: "dropdown-item" %></li>
-              <li><%= link_to "Register", new_user_registration_path, class: "dropdown-item" %></li>
-            <% end  %>
-          </li>
-        </ul>
-      </div>
-    </div>
+    <ul class="dropdown-menu dropdown-menu-start">
+      <% if user_signed_in? %>
+        <li><%= link_to"logout", destroy_user_session_path, data: {turbo_method: :delete}, class: "dropdown-item"%></li>
+      <% else %>
+        <li><%= link_to "Sign in", user_session_path, class: "dropdown-item" %></li>
+        <li><%= link_to "Register", new_user_registration_path, class: "dropdown-item" %></li>
+      <% end  %>
+    </ul>
   </div>
 </nav>

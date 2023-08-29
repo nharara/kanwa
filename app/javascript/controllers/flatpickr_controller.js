@@ -4,7 +4,7 @@ import flatpickr from "flatpickr";
 // Connects to data-controller="flatpickr"
 export default class extends Controller {
   connect() {
-    flatpickr(this.element, { mode: "range" });
+    flatpickr(this.element, { altInput: false, mode: "range" });
 
   }
 }

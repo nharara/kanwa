@@ -5,3 +5,36 @@
   background: none;
   border: none;
 }
+
+#calendar {
+  padding: 4px;
+  justify-content: center;
+}
+
+.input-group {
+  display: flex;
+  align-items: center;
+}
+
+.input-group input {
+  border: 1px solid #c3c3c3;
+  height: 36px;
+  line-height: 36px;
+  width: 80%;
+  padding: 4px;
+  max-width: 360px;
+  border-radius: 3px;
+  background: #fff;
+}
+
+a.input-button {
+  text-decoration: none;
+  border: 1px solid #bbb;
+  display: block;
+  padding: 13px;
+  border-left: 0;
+  cursor: pointer;
+  align-self: center;
+  justify-content: center;
+  line-height: 1;
+}
