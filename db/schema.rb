@@ -32,19 +32,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_28_090108) do
     t.index ["emotion_id"], name: "index_emotions_on_emotion_id"
   end
 
-  create_table "entries", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.string "action"
-    t.string "consequence"
-    t.bigint "user_id"
-    t.bigint "emotion_id"
-    t.string "situation"
-    t.string "situation_details"
-    t.index ["emotion_id"], name: "index_entries_on_emotion_id"
-    t.index ["user_id"], name: "index_entries_on_user_id"
-  end
-
   create_table "pg_search_documents", force: :cascade do |t|
     t.text "content"
     t.string "searchable_type"
