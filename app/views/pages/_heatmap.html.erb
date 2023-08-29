@@ -1,0 +1,5 @@
+<%# first item %>
+<div id="chart" data-controller="apexchart" data-apexchart-info-value="<%= @entries_by_date.to_json %> " data-apexchart-datas-value="<%= @entries_by_date.values.map(&:count) %> ">
+  <div class="d-block w-100" data-apexchart-target="heatmap">
+  </div>
+</div>

@@ -18,26 +18,31 @@
   height: 50px;
   position: sticky;
   bottom: 0;
+
   i {
-   font-size: 2em;
-   color: $blue;
+    font-size: 2em;
+    color: $blue;
   }
 }
 
-html, body {
+html,
+body {
   height: 100%;
 }
+
 body {
   display: flex;
   flex-direction: column;
 }
+
 .content {
   flex: 1 0 auto;
 }
+
 .footer {
   flex-shrink: 0;
 }
 
 .icon-active {
- color: #a2cbd4 !important;
+  color: #b0c6cb !important;
 }
