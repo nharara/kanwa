@@ -7,7 +7,6 @@ class PostsController < ApplicationController
     @posts = @posts.joins(:emotion).where("posts.title ILIKE ? OR emotions.name ILIKE ?", "%#{params[:title]}%", "%#{params[:title]}%") if params[:title].present?
     @posts = @posts.includes([:emotion])
     @posts = @posts.includes([:user])
-    @posts = @posts.includes([:comments])
     @parent_emotions = Emotion.where(parent_emotion: nil)
     @pagy, @posts = pagy(@posts)
 
