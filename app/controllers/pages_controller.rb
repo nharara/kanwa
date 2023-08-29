@@ -45,7 +45,6 @@ class PagesController < ApplicationController
                           .order('entry_count DESC')
                           .first
 
-
     @top_situation = @top_emotion.child_entries.where(user: current_user).group(:situation).count.max_by{ |situation, count| count }.first
 
     @top_emotion_name = @top_emotion.name
