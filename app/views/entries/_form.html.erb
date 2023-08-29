@@ -8,14 +8,14 @@
             item_wrapper_class: 'category-item',
             input_html: { class: 'category-selector' },
             collection: Entry::SITUATIONS %>
-    <%= f.input :situation_details %>
+    <%= f.input :situation_details, label: "What happened?"%>
     <%= f.association :emotion,
-                collection: emotions,
-                as: :radio_buttons,
-                collection_wrapper_tag: 'div',
-                collection_wrapper_class: 'category-wrapper',
-                item_wrapper_class: 'category-item',
-                input_html: { data: { "input-box-target" => "emotion", action: "change->input-box#toggleOtherEmotion"}, class: 'category-selector'} %>
+            collection: emotions,
+            as: :radio_buttons,
+            collection_wrapper_tag: 'div',
+            collection_wrapper_class: 'category-wrapper',
+            item_wrapper_class: 'category-item',
+            input_html: { data: { "input-box-target" => "emotion", action: "change->input-box#toggleOtherEmotion"}, class: 'category-selector'} %>
     <div data-input-box-target="childEmotion"></div>
     <div data-input-box-target="action">
       <%= f.input :action,
@@ -25,7 +25,7 @@
             item_wrapper_class: 'category-item',
             input_html: { class: 'category-selector' },
             collection: ['Yes', 'No'],
-            label: "Did you do the opposite action to how your emotion told you to act?" %>
+            label: "Were you able to control your action?" %>
     </div>
     <div data-input-box-target="consequence">
       <%= f.input :consequence,
