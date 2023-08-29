@@ -3,31 +3,39 @@ class EntriesController < ApplicationController
 
   def index
     @entries = Entry.where(user: current_user).order("created_at DESC")
-
     if params[:query].present?
-      @entries = @entries.search_by_sac(params[:query])
+
+      if Emotion::EMOTIONS.include?(params[:query])
+        parent_emotion = Emotion.find_by_name(params[:query])
+        @entries = @entries.joins(:emotion).where(emotions: { emotion_id: parent_emotion.id })
+        # {|entry| entry.emotion.emotion_id == parent_emotion.id}
+      else
+        @entries = @entries.search_by_sac(params[:query])
+
+      end
 
       g1 = @entries.group_by {|entry| entry.emotion}
 
       g2 = g1.transform_values {|entries| entries.group_by {|entry| entry.situation.split(":").first}}
       @g3 = g2.transform_values {|situations| situations.transform_values {|entries| entries.count}}
-      @highest_value_situation = @g3.values.first.sort_by {|key, value| value}.last.first
-      @action = @entries.where("situation ilike ?", "#{@highest_value_situation}%").group_by {|entry| entry.action}.transform_values {|value| value.count}
-      @action["Yes"] ||= 0
-      @action["No"] ||= 0
-      @total = @action.values.sum
-      @yes_action = @action["Yes"]
-      @yes_percentage = ((@yes_action.fdiv(@total))*100).round
+      if @g3 != {}
+        @highest_value_situation = @g3.values.first.sort_by {|key, value| value}.first.first
+        @action = @entries.where("situation ilike ?", "#{@highest_value_situation}%").group_by {|entry| entry.action}.transform_values {|value| value.count}
+        @action["Yes"] ||= 0
+        @action["No"] ||= 0
+        @total = @action.values.sum
+        @yes_action = @action["Yes"]
+        @yes_percentage = ((@yes_action.fdiv(@total))*100).round
+      end
       # current_user.entries.where("situation ilike ?", "relationship%").pluck(:action)
 
       # raise
     end
-    @entries = @entries.search_by_sac(params[:query]) if params[:query].present?
     @entries = @entries.where("created_at >= ? and created_at <= ?", *params[:datefilter].split(" to ")) if params[:datefilter].present?
 
     # raise
     @parent_emotions = Emotion.where(parent_emotion: nil)
-    @entries = @entries.includes([:emotion])
+    # @entries = @entries.includes([:emotion])
     @entry = Entry.new
     @pagy, @entries = pagy(@entries)
 

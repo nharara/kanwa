@@ -4,4 +4,6 @@ class Emotion < ApplicationRecord
   has_many :entries, dependent: :destroy
   has_many :child_entries, through: :child_emotions, source: :entries
   has_many :posts, dependent: :destroy
+
+  EMOTIONS = ["angry", "disgusted", "fearful", "bad", "surprised", "happy", "sad"]
 end
