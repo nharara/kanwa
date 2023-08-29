@@ -1,14 +1,16 @@
 <div data-controller="input-box" class="form-container align-items-center p-4">
   <h1 class="text-center">What Happened?</h1>
-  <%= simple_form_for entry, html: {data: {input_box_target: "form"}} do |f| %>
+  <%= simple_form_for entry, html: { id: 'entry_form', data: { controller: "input-box" } } do |f| %>
     <%= f.input :situation,
             as: :radio_buttons,
             collection_wrapper_tag: 'div',
             collection_wrapper_class: 'category-wrapper',
             item_wrapper_class: 'category-item',
-            input_html: { class: 'category-selector' },
+            input_html: { class: 'category-selector', data: { action: "change->input-box#toggleOtherSituation" }},
             collection: Entry::SITUATIONS %>
-    <%= f.input :situation_details, label: "What happened?"%>
+    <div data-input-box-target="situationDetails" style="display: none;">
+      <%= f.input :situation_details, label: "What happened?", input_html: { id: 'entry_situation_details' }%>
+    </div>
     <%= f.association :emotion,
             collection: emotions,
             as: :radio_buttons,
