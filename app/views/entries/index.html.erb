@@ -6,11 +6,11 @@
   <%# This is the end of the dropdown code %>
   <%# <%= render "search-category" %>  <%# Change render name to correct one later  %>
   <% if @g3.present? %>
-    <div class="container">
+    <div class="entry-stat">
       <% if !Entry::SITUATIONS.include?(params[:query]) %>
-        <h2> Most common situation : <%= @highest_value_situation %></h2>
+        <p> Most common situation : <%= @highest_value_situation %></p>
       <% end %>
-      <h3> Control rate : <%= @yes_percentage %>% </h3>
+      <p> Control rate : <%= @yes_percentage %>% </p>
     </div>
   <% end %>
   <div class='entries'>

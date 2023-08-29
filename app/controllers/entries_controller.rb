@@ -32,7 +32,7 @@ class EntriesController < ApplicationController
       # raise
     end
 
-    @entries = @entries.search_by_sac(params[:query]) if params[:query].present?
+    # @entries = @entries.search_by_sac(params[:query]) if params[:query].present?
 
     @entries = @entries.where("created_at >= ? and created_at <= ?", params[:datefilter].split(" to ").first, params[:datefilter].split(" to ").last) if params[:datefilter].present?
     # @entries = @entries.where("created_at >= ? and created_at <= ?", *params[:datefilter].split(" to ")) if params[:datefilter].present?   Past calendar search, keep for now.
