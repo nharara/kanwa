@@ -14,11 +14,12 @@
     <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/bootstrap.daterangepicker/2/daterangepicker.css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
   </head>
-  <body style="position: relative;"><%= render "shared/navbar" %>
+  <body style="position: relative;">
+  <%= render "shared/navbar" %>
     <div class="content">
       <%= render "shared/flashes" %>
       <%= yield %>
     </div>
-    <%= render "shared/navbar_bottom" %>
+    <%= render "shared/navbar_bottom"  if user_signed_in? %>
   </body>
 </html>
