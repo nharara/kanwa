@@ -1,18 +1,18 @@
 <nav class='navigation'>
-    <a href="/dashboard" class="navbar-brand">
-      <i class="fa-solid fa-k fs-2 me-1" style="color: #8AB2BB;"></i>anwa
-    </a>
-    <div class="btn-group dropstart">
-    <button class="btn btn-outline-primary" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+  <a href="/dashboard" class="navbar-brand">
+    <i class="fa-solid fa-k fs-2 me-1" style="color: #8AB2BB;"></i>anwa
+  </a>
+  <div class="btn-group dropstart">
+    <button class="btn" type="button" data-bs-toggle="dropdown" aria-expanded="false">
       <i class="fa-solid fa-bars"></i>
     </button>
-        <ul class="dropdown-menu dropdown-menu-start">
-            <% if user_signed_in? %>
-              <li><%= link_to"logout", destroy_user_session_path, data: {turbo_method: :delete}, class: "dropdown-item"%></li>
-            <% else %>
-              <li><%= link_to "Sign in", user_session_path, class: "dropdown-item" %></li>
-              <li><%= link_to "Register", new_user_registration_path, class: "dropdown-item" %></li>
-            <% end  %>
-        </ul>
-    </div>
+    <ul class="dropdown-menu dropdown-menu-start">
+      <% if user_signed_in? %>
+        <li><%= link_to"logout", destroy_user_session_path, data: {turbo_method: :delete}, class: "dropdown-item"%></li>
+      <% else %>
+        <li><%= link_to "Sign in", user_session_path, class: "dropdown-item" %></li>
+        <li><%= link_to "Register", new_user_registration_path, class: "dropdown-item" %></li>
+      <% end  %>
+    </ul>
+  </div>
 </nav>
