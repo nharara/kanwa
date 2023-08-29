@@ -11,8 +11,8 @@
         <div data-controller='voting' data-voting-votes-value="<%=post.votes%>">
           <p class="card-text"><%= post.content %></p>
           <button class="p-0" id="comments_button">
-            <i class="fa-regular fa-message" data-bs-toggle="modal" data-bs-target="#comment-display-<%=post.id%>"></i>
-            <p class="d-inline-block fs-5 m-0"><%= post.comments.count %></p>
+            <i class="fa-regular fa-message text-primary" data-bs-toggle="modal" data-bs-target="#comment-display-<%=post.id%>"></i>
+            <p class="d-inline-block fs-5 m-0 text-primary"><%= post.comments.count %></p>
           </button>
         </div>
         <!-- See comments end -->
