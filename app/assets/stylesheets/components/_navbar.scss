@@ -1,7 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Satisfy&display=swap');
 
-  @import url('https://fonts.googleapis.com/css2?family=Satisfy&display=swap');
-
-.navigation{
+.navigation {
   width: 100%;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   background: linear-gradient(180deg, #e3f2fd, rgba(255, 255, 255, 0.65));
@@ -17,7 +16,7 @@
   flex-grow: 0;
 }
 
-.navbar-brand{
+.navbar-brand {
   width: 40px;
   margin-left: 0.5em;
   font-family: Satisfy;
@@ -25,6 +24,7 @@
   color: transparent;
   transition: 1s;
 }
+
 
 .button{
   border: none;
@@ -39,19 +39,21 @@
   color: #8AB2BB
 }
 
-.dropdown{
+.dropdown {
   width: 40px;
 }
+
 
 .dropdown-menu{
   background-color: rgba(255, 255, 255, 0.65);
 }
 
-.dropdown-item{
+.dropdown-item {
   padding: 0.3em;
   padding-left: 1.5em;
   border-radius: 8px;
 }
+
 // .collapse {
 //   justify-content: end;
 //   display: flex;
