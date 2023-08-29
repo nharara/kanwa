@@ -2,30 +2,19 @@
 <div class="row justify-content-center p-3 pt-0">
   <% posts.each do |post| %>
     <div class="card card-trip text-bg-light mb-3 od p-0">
-      <div class="card-header d-flex justify-content-between">
+      <div class="px-4 py-3 d-flex flex-column justify-content-between">
+        <h6 class="text-align-left text-secondary"><%= post.user.nickname %></h6>
         <h5><%= post.title %></h5>
         <div>
-          <p class='badge text-bg-primary'><%= post.emotion.name %></p>
+          <p class='badge rounded-pill bg-primary text-dark'><%= post.emotion.name %></p>
         </div>
-      </div>
-      <div class="card-body" data-controller='voting' data-voting-votes-value="<%=post.votes%>">
-        <h5 class="card-title"><%= post.user.nickname %></h5>
-        <p class="card-text"><%= post.content %></p>
-        <div class="d-flex">
-        <%= button_to 'feel related', upvote_post_path(post), class: 'badge text-bg-light mx-2', data: {action: "click->voting#upvote"}%>
-
-        <p class='d-inline-block'>
-          <strong data-voting-target='update'><%= post.votes %></strong>
-        </p>
+        <div data-controller='voting' data-voting-votes-value="<%=post.votes%>">
+          <p class="card-text"><%= post.content %></p>
+          <button class="p-0" id="comments_button">
+            <i class="fa-regular fa-message" data-bs-toggle="modal" data-bs-target="#comment-display-<%=post.id%>"></i>
+            <p class="d-inline-block fs-5 m-0"><%= post.comments.count %></p>
+          </button>
         </div>
-
-        <br>
-        <%# Add a comment button here %>
-        <%# Add a comment button ends here %>
-        <!-- See comments  -->
-        <button id="comments_button">
-          <i class="fa-regular fa-message fa-xl" data-bs-toggle="modal" data-bs-target="#comment-display-<%=post.id%>"> <%= post.comments.count %> </i>
-        </button>
         <!-- See comments end -->
       </div>
     </div>
