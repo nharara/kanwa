@@ -5,10 +5,11 @@
   <%= render "search", emotions: @parent_emotions %>
   <%# This is the end of the dropdown code %>
   <%# <%= render "search-category" %>  <%# Change render name to correct one later  %>
-  <% if !Entry::SITUATIONS.include?(params[:query]) %>
+  <% if @g3.present? %>
     <div class="container">
-      <h2> Most common situation : <%= @highest_value_situation %></h2>
-      <%# <h2> Count : <%= @g3.values.first.max_by {|situation, count| count}[1] %>
+      <% if !Entry::SITUATIONS.include?(params[:query]) %>
+        <h2> Most common situation : <%= @highest_value_situation %></h2>
+      <% end %>
       <h3> Control rate : <%= @yes_percentage %>% </h3>
     </div>
   <% end %>
