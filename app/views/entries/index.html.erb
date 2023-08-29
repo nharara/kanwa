@@ -5,14 +5,7 @@
   <%= render "search", emotions: @parent_emotions %>
   <%# This is the end of the dropdown code %>
   <%# <%= render "search-category" %>  <%# Change render name to correct one later  %>
-  <% if @g3.present? %>
-    <div class="entry-stat">
-      <% if !Entry::SITUATIONS.include?(params[:query]) %>
-        <p> Most common situation : <%= @highest_value_situation %></p>
-      <% end %>
-      <p> Control rate : <%= @yes_percentage %>% </p>
-    </div>
-  <% end %>
+
   <div class='entries'>
     <%# Pagy %>
     <div class="d-flex justify-content-center pt-3">
@@ -22,6 +15,14 @@
         </div>
       </div>
     </div>
+      <% if @g3.present? %>
+    <div class="entry-stat">
+      <% if !Entry::SITUATIONS.include?(params[:query]) %>
+        <p> Most common situation : <%= @highest_value_situation %></p>
+      <% end %>
+      <p> Emotion control rate : <%= @yes_percentage %>% </p>
+    </div>
+  <% end %>
     <div class='py-0 px-4 mt-n4 text-end'>
       <%= link_to entries_path(params.permit(:query, :datefilter).merge(format: :pdf)), target: "_blank" do %>
         <i class="fa-regular fa-file-pdf col-1 fs-3"></i>

@@ -1,21 +1,15 @@
 <% @entries.each do |entry| %>
-  <div class="card card-trip text-bg-light mb-3 od p-0">
-    <div class="card-header d-flex justify-content-between">
-      <p class="pt-2 mb-0"><%= entry.emotion.name.capitalize %></p>
+  <div class="card card-trip text-bg-light mb-3 od py-1 px-2">
+    <div class="d-flex justify-content-between px-3 pt-3">
+      <p class="pt-2 mb-0 fs-5"><%= entry.emotion.name.capitalize %></p>
       <p class="pt-2 mb-0"><%= entry.created_at.strftime("%F") %></p>
     </div>
-    <div class="card-body justify-content-center pb-0">
-      <p class="card-text mb-1">
-        <em>Situation:</em>
-        <br>
-        <p class="indented mb-1">Category: <%= entry.situation.capitalize %></p>
-        <p class="indented mb-2"> Details: <%= entry.situation_details %></p>
-        <em>Did I control my actions: </em>
-        <%= entry.action %>
-        <br>
-        <em id="line-height">Turned out well: </em>
-        <%= entry.consequence %>
-      </p>
+    <div class="justify-content-center p-3">
+
+      <p><%= entry.situation.capitalize %>: <%= entry.situation_details %></p>
+      <p>Did I control my actions: <%= entry.action %> </p>
+      <p>Turned out well: <%= entry.consequence %> </p>
+
     </div>
   </div>
 <% end %>
