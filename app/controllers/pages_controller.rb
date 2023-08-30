@@ -47,7 +47,11 @@ class PagesController < ApplicationController
                           .order('entry_count DESC')
                           .first
 
-    @top_situation = @top_emotion.child_entries.where(user: current_user).group(:situation).count.max_by{ |situation, count| count }.first
+    @emotion = Emotion.find_by(name: @top_emotion.name)
+    # @top_situation = @top_emotion.child_entries.where(user: current_user).group(:situation).count.max_by{ |situation, count| count }.first
+    stats(@emotion.child_entries.where(user: current_user).where('entries.created_at BETWEEN ? AND ?', Date.today.beginning_of_day - 30.days, Date.today.end_of_day))
+    # @entries = @entries.joins(:emotion).where(emotions: { emotion_id: @top_emotion.id })
+    # stats(@entries)
 
     @top_emotion_name = @top_emotion.name
     # @top_emotion_situation = @top_emotion.situation
