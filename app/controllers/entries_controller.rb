@@ -1,4 +1,5 @@
 class EntriesController < ApplicationController
+
   before_action :authenticate_user!
 
   def index
@@ -13,27 +14,14 @@ class EntriesController < ApplicationController
       end
       @entries = @entries.where("DATE(entries.created_at) >= ? and DATE(entries.created_at) <= ?", params[:datefilter].split(" to ").first, params[:datefilter].split(" to ").last) if params[:datefilter].present?
 
-      g1 = @entries.group_by {|entry| entry.emotion}
-
-      g2 = g1.transform_values {|entries| entries.group_by {|entry| entry.situation.split(":").first}}
-      @g3 = g2.transform_values {|situations| situations.transform_values {|entries| entries.count}}
-      if @g3 != {}
-        @highest_value_situation = @g3.values.first.sort_by {|key, value| value}.first.first
-        @action = @entries.where("situation ilike ?", "#{@highest_value_situation}%").group_by {|entry| entry.action}.transform_values {|value| value.count}
-        @action["Yes"] ||= 0
-        @action["No"] ||= 0
-        @total = @action.values.sum
-        @yes_action = @action["Yes"]
-        @yes_percentage = ((@yes_action.fdiv(@total))*100).round
-      end
-      # current_user.entries.where("situation ilike ?", "relationship%").pluck(:action)
+      stats(@entries)
 
       # raise
     end
 
     # @entries = @entries.search_by_sac(params[:query]) if params[:query].present?
 
-    @entries = @entries.where("DATE(entries.created_at) >= ? and DATE(entries.created_at) <= ?", params[:datefilter].split(" to ").first, params[:datefilter].split(" to ").last) if params[:datefilter].present?
+
 
     # @entries = @entries.where("created_at >= ? and created_at <= ?", *params[:datefilter].split(" to ")) if params[:datefilter].present?   Past calendar search, keep for now.
 

@@ -207,3 +207,5 @@ User.all.each do |user|
 end
 
 puts "#{Entry.count} entries created"
+# This removes any entry that has a top level emotion. Should probably fix this above 👆
+Entry.where(emotion: Emotion.where(parent_emotion: nil)).destroy_all
