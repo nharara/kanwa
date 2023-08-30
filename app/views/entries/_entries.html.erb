@@ -1,9 +1,10 @@
 <% @entries.each do |entry| %>
-
   <div class="card card-trip text-bg-light mb-3 od py-1 px-2" data-controller="enty-thinner" data-action="click->enty-thinner#dropdown" >
-
     <div class="d-flex justify-content-between px-3 pt-3">
-      <p class="pt-2 mb-0 fs-5"><%= entry.emotion.name.capitalize %></p>
+      <div>
+        <p class="pt-2 mb-0 fs-5"><%= entry.emotion.name.capitalize %></p>
+        <p><%= entry.situation.capitalize %>: <%= entry.situation_details %></p>
+      </div>
       <p class="pt-2 mb-0"><%= entry.created_at.strftime("%F") %></p>
     </div>
     <div class="justify-content-center p-3 d-none" data-enty-thinner-target="details">
