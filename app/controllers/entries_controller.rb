@@ -10,7 +10,7 @@ class EntriesController < ApplicationController
       else
         @entries = @entries.search_by_sac(params[:query])
       end
-      @entries = @entries.where("entries.created_at >= ? and entries.created_at <= ?", params[:datefilter].split(" to ").first, params[:datefilter].split(" to ").last) if params[:datefilter].present?
+      @entries = @entries.where("DATE(entries.created_at) >= ? and DATE(entries.created_at) <= ?", params[:datefilter].split(" to ").first, params[:datefilter].split(" to ").last) if params[:datefilter].present?
 
       g1 = @entries.group_by {|entry| entry.emotion}
 
@@ -32,10 +32,11 @@ class EntriesController < ApplicationController
 
     # @entries = @entries.search_by_sac(params[:query]) if params[:query].present?
 
-    @entries = @entries.where("entries.created_at >= ? and entries.created_at <= ?", params[:datefilter].split(" to ").first, params[:datefilter].split(" to ").last) if params[:datefilter].present?
+    @entries = @entries.where("DATE(entries.created_at) >= ? and DATE(entries.created_at) <= ?", params[:datefilter].split(" to ").first, params[:datefilter].split(" to ").last) if params[:datefilter].present?
+
     # @entries = @entries.where("created_at >= ? and created_at <= ?", *params[:datefilter].split(" to ")) if params[:datefilter].present?   Past calendar search, keep for now.
 
-    # raise
+
     @parent_emotions = Emotion.where(parent_emotion: nil)
     # @entries = @entries.includes([:emotion])
     @entry = Entry.new
