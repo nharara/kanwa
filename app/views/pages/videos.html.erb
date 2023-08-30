@@ -1,0 +1,20 @@
+<div class="container">
+  <div class="row justify-content-center">
+  <h1 class='text-center mb-3'>Sugested Videos</h1>
+  <p class='my-1 px-0'>This may help you with your latest situation: <%= "#{@entry.situation}, #{@entry.emotion.name}."  %></p>
+    <%@video_ids.each do |id|  %>
+
+      <div class="col-12 p-4 my-2 shadow d-flex justify-content-center">
+        <iframe
+        class='video'
+        src="https://www.youtube.com/embed/<%=id%>"
+        title="YouTube video player"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        allowfullscreen></iframe>
+      </div>
+
+    <% end %>
+
+  </div>
+</div>
