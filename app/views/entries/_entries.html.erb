@@ -5,11 +5,9 @@
       <p class="pt-2 mb-0"><%= entry.created_at.strftime("%F") %></p>
     </div>
     <div class="justify-content-center p-3">
-
       <p><%= entry.situation.capitalize %>: <%= entry.situation_details %></p>
       <p>Did I control my actions: <%= entry.action %> </p>
       <p>Turned out well: <%= entry.consequence %> </p>
-
     </div>
   </div>
 <% end %>
