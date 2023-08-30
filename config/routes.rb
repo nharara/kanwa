@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   end
 
   get "/dashboard", to: "pages#dashboard", as: :dashboard
+  get "/videos", to: "pages#videos", as: :videos
   # Defines the root path route ("/")
   # root "articles#index"
 end
