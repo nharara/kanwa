@@ -61,6 +61,7 @@ gem "groupdate"
 gem "rails_admin", "3.0"
 gem 'faker'
 gem "pagy", "~> 6.0"
+gem "google-apis-youtube_v3"
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
