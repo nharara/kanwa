@@ -12,3 +12,7 @@
     </button>
   </div>
 <% end %>
+
+<% if flash[:success] %>
+  <div class="flash alert-dismissible fade show"><%= flash[:success] %></div>
+<% end %>

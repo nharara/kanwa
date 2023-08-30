@@ -70,7 +70,13 @@ class EntriesController < ApplicationController
 
     @entry.user = current_user
     if @entry.save
-      redirect_to entries_path
+      redirect_to dashboard_path
+      flash[:success] =
+        if @entry.action == 'Yes'
+          "A new entry was added\n-Congratulations, you are becoming the master of your actions!"
+        else
+          "A new entry was added\n-Dont't get discouraged, the experience makes the master"
+        end
     else
       render :new, status: :unprocessable_entity
     end
