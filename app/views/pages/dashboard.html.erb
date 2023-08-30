@@ -11,7 +11,8 @@
       <h2 class="text-center">Emotions in the last month</h2>
       <div class="d-flex">
         <div><%= render "emotions_pie_chart", data: @emotions_data%></div>
-        <div class="message text-center pt-4"> You felt <em><%= @top_emotion_name %></em> about your <em><%= @top_situation %></em> most frequently. </div>
+        <div class="message text-center pt-4"> You felt <span style="color:<%= Emotion::EMOTION_COLOR[@top_emotion_name] %>
+        "><b><em><%= @top_emotion_name %></em></b></span> about your <b><em><%= @top_situation %></em></b> most frequently. </div>
       </div>
     </div>
     <div class="pie-card col-12">
