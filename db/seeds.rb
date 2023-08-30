@@ -198,7 +198,8 @@ User.all.each do |user|
       updated_at: time,
       action: ['Yes', 'No'].sample,
       consequence: ['Yes', 'No'].sample,
-      situation: ['family', 'work', 'friends', 'relationship'].sample
+      situation: ['family', 'work', 'friends', 'relationship'].sample,
+      situation_details: Faker::Lorem.paragraph(sentence_count: rand(4..20))
     )
     entry.user = user
     entry.save
