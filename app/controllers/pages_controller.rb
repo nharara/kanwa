@@ -56,6 +56,8 @@ class PagesController < ApplicationController
 
   end
 
+  ["angry", "disgusted", "fearful", "bad", "surprised", "happy", "sad"]
+
   def greeting
     current_time = Time.zone.now
     case current_time.hour
