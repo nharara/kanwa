@@ -55,7 +55,7 @@ class PagesController < ApplicationController
   end
 
   def greeting
-    current_time = Time.now
+    current_time = Time.zone.now
     case current_time.hour
     when 5..11
       "Good morning, "
