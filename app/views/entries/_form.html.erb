@@ -5,7 +5,7 @@
             as: :radio_buttons,
             collection_wrapper_tag: 'div',
             collection_wrapper_class: 'category-wrapper',
-            item_wrapper_class: 'category-item',
+            item_wrapper_class: 'category-item m-1',
             input_html: { class: 'category-selector', data: { action: "change->input-box#toggleOtherSituation" }},
             collection: Entry::SITUATIONS %>
     <div data-input-box-target="situationDetails" style="display: none;">
@@ -16,7 +16,7 @@
             as: :radio_buttons,
             collection_wrapper_tag: 'div',
             collection_wrapper_class: 'category-wrapper',
-            item_wrapper_class: 'category-item',
+            item_wrapper_class: 'category-item m-1',
             input_html: { data: { "input-box-target" => "emotion", action: "change->input-box#toggleOtherEmotion"}, class: 'category-selector'} %>
     <div data-input-box-target="childEmotion"></div>
     <div data-input-box-target="action">
@@ -24,7 +24,7 @@
             as: :radio_buttons,
             collection_wrapper_tag: 'div',
             collection_wrapper_class: 'category-wrapper',
-            item_wrapper_class: 'category-item',
+            item_wrapper_class: 'category-item m-1',
             input_html: { class: 'category-selector' },
             collection: ['Yes', 'No'],
             label: "Were you able to control your action?" %>
@@ -34,7 +34,7 @@
             as: :radio_buttons,
             collection_wrapper_tag: 'div',
             collection_wrapper_class: 'category-wrapper',
-            item_wrapper_class: 'category-item',
+            item_wrapper_class: 'category-item m-1',
             input_html: { class: 'category-selector' },
             collection: ['Yes', 'No'],
             label: "Did things go the way you wanted through your action?" %>

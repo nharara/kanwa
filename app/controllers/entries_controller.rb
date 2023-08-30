@@ -72,7 +72,7 @@ class EntriesController < ApplicationController
     if @entry.save
       redirect_to entries_path
     else
-      render :index, status: :unprocessable_entity
+      render :new, status: :unprocessable_entity
     end
   end
 
