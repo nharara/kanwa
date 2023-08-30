@@ -12,25 +12,23 @@
         <div class="col-10 ">
           <%== pagy_bootstrap_nav(@pagy) %>
         </div>
-      </div>
-    </div>
-    <div class="d-flex justify-content-<%= @g3.present? ? 'between' : 'end' %>" style="width:95%">
-      <% if @g3.present? %>
-        <div class="entry-stat">
-          <% if !Entry::SITUATIONS.include?(params[:query]) %>
-            <p> Most common situation : <%= @highest_value_situation %></p>
-          <% end %>
-          <p> Emotion control rate : <%= @yes_percentage %>% </p>
+        <%# PDF begining %>
+        <div class='col-1 py-0 px-2 text-end mt-1 mb-1'>
+          <%= link_to entries_path(params.permit(:query, :datefilter).merge(format: :pdf)), target: "_blank" do %>
+            <i class="fa-regular fa-file-pdf col-1 fs-1"></i>
+          <%end%>
         </div>
-      <% end %>
-      <%# PDF begining %>
-      <div class='py-0 text-end mt-1 mb-1'>
-        <%= link_to entries_path(params.permit(:query, :datefilter).merge(format: :pdf)), target: "_blank" do %>
-          <i class="fa-regular fa-file-pdf fs-1"></i>
-        <%end%>
+        <%# PDF ending %>
       </div>
-      <%# PDF ending %>
     </div>
+    <% if @g3.present? %>
+      <div class="entry-stat">
+        <% if !Entry::SITUATIONS.include?(params[:query]) %>
+          <p> Most common situation : <%= @highest_value_situation %></p>
+        <% end %>
+        <p> Emotion control rate : <%= @yes_percentage %>% </p>
+      </div>
+    <% end %>
     <%# Entries %>
     <%= render 'entries', entries: @entries %>
   </div>
