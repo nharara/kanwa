@@ -1,0 +1,18 @@
+@media (orientation: landscape) {
+
+  .video {
+    height: 85vh;
+    width: 70%;
+  }
+}
+
+@media (orientation: portrait) {
+  .video {
+    height: 30vh;
+    width: 100%
+  }
+}
+
+.video-card p {
+  color: rgb(168, 167, 167);
+}

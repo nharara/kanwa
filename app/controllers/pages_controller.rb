@@ -1,3 +1,5 @@
+require 'google/apis/youtube_v3'
+
 class PagesController < ApplicationController
   skip_before_action :authenticate_user!, only: [:home]
 
@@ -70,6 +72,17 @@ class PagesController < ApplicationController
     else
       "Hi "
     end
+  end
+
+  def videos
+
+    @entry = current_user.entries.last
+
+    youtube = Google::Apis::YoutubeV3::YouTubeService.new
+    youtube.key = 'AIzaSyB5ywnOhgcW8Q-isywzjYcwLaSAomiNc70' # See Googleauth or Signet libraries
+    response = youtube.list_searches('snippet', channel_id: 'UClHVl2N3jPEbkNJVx-ItQIQ', max_results: 4, type: 'video', q: "#{@entry.emotion.name} #{@entry.situation}")
+    @video_ids = response.items.map { |item| item.id.video_id }
+
   end
 end
 # 'Mo*', 'Tu*', 'We*', 'Th*', 'Fr*', 'Sa*', 'Su*',

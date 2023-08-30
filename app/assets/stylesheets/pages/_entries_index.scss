@@ -1,4 +1,3 @@
-
 .indented {
   margin-left: 15px;
   display: block;
@@ -8,9 +7,9 @@
   border: none !important;
 }
 
-.card{
-  background: linear-gradient(180deg, #e7f1f8, rgba(255, 255, 255, 0.65));
-  box-shadow:-5px 0 0 #fefefe;
+.card {
+  // background: linear-gradient(180deg, #e7f1f8, rgba(255, 255, 255, 0.65));
+  box-shadow: -5px 0 0 #fefefe;
   margin-top: 0;
-  color: $gray;
+  // color: $gray;
 }
