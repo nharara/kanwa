@@ -1,7 +1,7 @@
 <%# display the all the posts %>
 <div class="row justify-content-center p-3 pt-0">
   <% posts.each do |post| %>
-    <div class="card card-trip text-bg-light mb-3 od p-0">
+    <div class="card card-trip mb-3 od p-0">
       <div class="px-4 py-3 d-flex flex-column justify-content-between">
         <h6 class="text-align-left text-secondary"><%= post.user.nickname %></h6>
         <h5><%= post.title %></h5>
@@ -9,9 +9,9 @@
           <p class='badge rounded-pill bg-primary text-dark'><%= post.emotion.name %></p>
         </div>
         <div data-controller='voting' data-voting-votes-value="<%=post.votes%>">
-          <p class="card-text"><%= post.content %></p>
-          <button class="p-0" id="comments_button">
-            <i class="fa-regular fa-message text-primary" data-bs-toggle="modal" data-bs-target="#comment-display-<%=post.id%>"></i>
+          <p class="card-text m-0 "><%= post.content %></p>
+          <button class="btn p-2" id="comments_button" data-bs-toggle="modal" data-bs-target="#comment-display-<%=post.id%>">
+            <i class="fa-regular fa-message text-primary"></i>
             <p class="d-inline-block fs-5 m-0 text-primary"><%= post.comments.count %></p>
           </button>
         </div>

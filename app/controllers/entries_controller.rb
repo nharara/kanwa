@@ -3,6 +3,7 @@ class EntriesController < ApplicationController
 
   def index
     @entries = Entry.where(user: current_user).order("created_at DESC")
+    # @entries = @entries.includes([:emotion])
     if params[:query].present?
       if Emotion::EMOTIONS.include?(params[:query])
         parent_emotion = Emotion.find_by_name(params[:query])
