@@ -30,9 +30,9 @@ class PagesController < ApplicationController
 
     #count yes for each day
 
-    @percentage_data = @yes_data.map.with_index { |data, i| [data[0], data[1] + @no_data.values[i]] }.to_h
+    # @percentage_data = @yes_data.map.with_index { |data, i| [data[0], data[1] + @no_data.values[i]] }.to_h
 
-    @actions_data = [{ name: 'Controlled action', data: @percentage_data }, { name: 'Uncontrolled action', data: @no_data }]
+    @actions_data = [{ name: 'Controlled action', data: @yes_data }, { name: 'Uncontrolled action', data: @no_data }]
 
     @emotions_data = Emotion
                             .joins(child_emotions: { entries: :user })
