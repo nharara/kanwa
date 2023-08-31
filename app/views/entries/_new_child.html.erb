@@ -3,7 +3,7 @@
   <div class="category-wrapper">
     <input type="hidden" name="entry[specific_emotion_id]" value="" autocomplete="off">
     <% emotions.each do |emotion| %>
-      <div class="category-item">
+      <div class="category-item m-1">
         <input class="form-check-input radio_buttons required category-selector" data-input-box-target="emotion" type="radio" value="<%= emotion.id %>" name="entry[specific_emotion_id]" id="entry_emotion_id_<%= emotion.id %>">
         <label class="form-check-label collection_radio_buttons" for="entry_emotion_id_<%= emotion.id%>"><%= emotion.name %></label>
       </div>

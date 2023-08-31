@@ -14,5 +14,7 @@
 <% end %>
 
 <% if flash[:success] %>
-  <div class="flash alert-dismissible fade show"><%= flash[:success] %></div>
+  <div class="flash shadow-sm py-1 px-2" data-controller="flasher">
+    <%= flash[:success] %>
+  </div>
 <% end %>

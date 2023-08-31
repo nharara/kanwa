@@ -61,9 +61,11 @@ class EntriesController < ApplicationController
       redirect_to dashboard_path
       flash[:success] =
         if @entry.action == 'Yes'
-          "A new entry was added\n-Congratulations, you are becoming the master of your actions!"
+          "A new entry was added,
+          -Congratulations, you are becoming the master of your actions!"
         else
-          "A new entry was added\n-Dont't get discouraged, the experience makes the master"
+          "A new entry was added,
+          -Dont't get discouraged, the experience makes the master"
         end
     else
       render :new, status: :unprocessable_entity
