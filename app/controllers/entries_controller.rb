@@ -12,7 +12,7 @@ class EntriesController < ApplicationController
       else
         @entries = @entries.search_by_sac(params[:query])
       end
-      @entries = @entries.where("DATE(entries.created_at) >= ? and DATE(entries.created_at) <= ?", params[:datefilter].split(" to ").first, params[:datefilter].split(" to ").last) if params[:datefilter].present?
+
 
       stats(@entries)
 
@@ -26,7 +26,11 @@ class EntriesController < ApplicationController
 
     # @entries = @entries.where("created_at >= ? and created_at <= ?", *params[:datefilter].split(" to ")) if params[:datefilter].present?   Past calendar search, keep for now.
 
-    @entries = @entries.where("DATE(entries.created_at) >= ? and DATE(entries.created_at) <= ?", params[:datefilter].split(" to ").first, params[:datefilter].split(" to ").last) if params[:datefilter].present?
+    if params[:datefilter].present?
+      start_date = Date.parse(params[:datefilter].split(" to ").first)
+      end_date = Date.parse(params[:datefilter].split(" to ").last)
+      @entries = @entries.where(created_at: start_date.beginning_of_day..end_date.end_of_day)
+    end
 
     @parent_emotions = Emotion.where(parent_emotion: nil)
     # @entries = @entries.includes([:emotion])
