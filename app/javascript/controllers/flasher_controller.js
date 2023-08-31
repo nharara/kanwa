@@ -7,6 +7,6 @@ export default class extends Controller {
 
     setTimeout(() => {
       this.element.classList.add("d-none")
-    }, 10000);
+    }, 100000000000);
   }
 }

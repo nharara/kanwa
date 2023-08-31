@@ -12,9 +12,9 @@
     </button>
   </div>
 <% end %>
-
 <% if flash[:success] %>
   <div class="flash shadow-sm py-1 px-2" data-controller="flasher">
-    <%= flash[:success] %>
+    <p class="m-0"><%= flash[:success] %></p>
+    <%= flash[:success_two] %>
   </div>
 <% end %>
