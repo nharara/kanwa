@@ -18,7 +18,7 @@ class PagesController < ApplicationController
 
 
     @entries = Entry.where(user: current_user)
-                    .where('entries.created_at BETWEEN ? AND ?', Date.today.beginning_of_day - 30.days, Date.today.end_of_day)
+                    .where('entries.created_at BETWEEN ? AND ?', Date.today.beginning_of_day - 15.days, Date.today.end_of_day)
                     .order(:created_at)
 
     @entries_by_day = @entries.group_by { |entry| entry.created_at.to_date }
@@ -30,7 +30,7 @@ class PagesController < ApplicationController
 
     #count yes for each day
 
-    # @percentage_data = @yes_data.map.with_index { |data, i| [data[0], data[1] + @no_data.values[i]] }.to_h
+    @percentage_data = @yes_data.map.with_index { |data, i| [data[0], data[1] / (data[1] + @no_data.values[i]) * 100] }.to_h
 
     @actions_data = [{ name: 'Controlled action', data: @yes_data }, { name: 'Uncontrolled action', data: @no_data }]
 
