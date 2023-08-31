@@ -1,5 +1,5 @@
 <% @entries.each do |entry| %>
-  <div class="card card-trip text-bg-light mb-3 od py-1 px-2" data-controller="enty-thinner" data-action="click->enty-thinner#dropdown" style="<%= 'border-left: 3px solid #FF6978;' if entry.action == 'No' %>" >
+  <div class="card card-trip mb-3 od py-1 px-2" data-controller="enty-thinner" data-action="click->enty-thinner#dropdown" style="<%= 'border-left: 3px solid #FF6978;' if entry.action == 'No' %>" >
     <div class="px-3 pt-3">
       <div class="d-flex justify-content-between align-items-center">
         <p class="pt-2 mb-0 fs-5"><%= entry.emotion.name.capitalize %></p>

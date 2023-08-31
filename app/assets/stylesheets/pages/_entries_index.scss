@@ -8,8 +8,9 @@
 }
 
 .card {
-  background: linear-gradient(180deg, #e7f1f8, rgba(255, 255, 255, 0.65));
-  box-shadow: -5px 0 0 #fefefe;
+  // background: linear-gradient(180deg, #f4fbff, rgba(255, 255, 255, 0.65));
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background-color: $white;
   margin-top: 0;
   // color: $gray;
 }
