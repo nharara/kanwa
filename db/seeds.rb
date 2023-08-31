@@ -123,7 +123,7 @@ emotion_contents = [
 
 
 
-Emotion.destroy_all
+# Emotion.destroy_all
 
 puts 'creating emotions and sub emotions'
 
@@ -139,73 +139,73 @@ sub_emotions_list = [
   ["lonely", "vulnerable", "despair", "guilty", "depressed", "hurt"]
 ]
 
-emotions.each_with_index do |emotion, index|
-  instance = Emotion.create!(name: emotion)
-  sub_emotions_list[index].each do |sub_emotion|
-    sub_instance = Emotion.new(name: sub_emotion)
-    sub_instance.parent_emotion = instance
-    sub_instance.save
-  end
-end
+# emotions.each_with_index do |emotion, index|
+#   instance = Emotion.create!(name: emotion)
+#   sub_emotions_list[index].each do |sub_emotion|
+#     sub_instance = Emotion.new(name: sub_emotion)
+#     sub_instance.parent_emotion = instance
+#     sub_instance.save
+#   end
+# end
 
-puts 'created emotions and sub emotions'
+# puts 'created emotions and sub emotions'
 
-User.destroy_all
+# User.destroy_all
 
-puts 'creating users'
+# puts 'creating users'
 
-count = 0
+# count = 0
 
-10.times do
-  User.create!(
-    full_name: "#{Faker::Name.first_name} #{Faker::Name.last_name}",
-    nickname: "nick#{count}",
-    email: "false#{count}@mail.com",
-    password: 'encrypted'
-  )
-  count += 1
-end
+# 10.times do
+#   User.create!(
+#     full_name: "#{Faker::Name.first_name} #{Faker::Name.last_name}",
+#     nickname: "nick#{count}",
+#     email: "false#{count}@mail.com",
+#     password: 'encrypted'
+#   )
+# #   count += 1
+# # end
 
-puts "#{User.count}users created"
+# puts "#{User.count}users created"
 
-puts "creating posts"
+# puts "creating posts"
 
 emotions = Emotion.where.not(emotion_id: nil)
 
-User.all.each do |user|
-  10.times do
-    emotion = rand(0..99)
-    post = Post.new(
-      title: emotion_titles[emotion],
-      content: emotion_contents[emotion],
-      emotion: emotions.sample
-    )
-    post.user = user
-    post.save
-  end
-end
+# User.all.each do |user|
+#   10.times do
+#     emotion = rand(0..99)
+#     post = Post.new(
+#       title: emotion_titles[emotion],
+#       content: emotion_contents[emotion],
+#       emotion: emotions.sample
+#     )
+#     post.user = user
+#     post.save
+#   end
+# end
 
-puts "#{Post.count} posts created"
+# puts "#{Post.count} posts created"
 
-puts 'creating entries'
+# puts 'creating entries'
 
-User.all.each do |user|
-  120.times do
-    time = Faker::Date.between(from: 60.days.ago, to: Date.today)
-    entry = Entry.new(
-      emotion: Emotion.all.sample,
-      created_at: time,
-      updated_at: time,
-      action: ['Yes', 'No'].sample,
-      consequence: ['Yes', 'No'].sample,
-      situation: ['family', 'work', 'friends', 'relationship'].sample,
-      situation_details: Faker::Lorem.paragraph(sentence_count: rand(4..20))
-    )
-    entry.user = user
-    entry.save
-  end
-end
+# User.all.each do |user|
+#   120.times do
+#     time = Faker::Date.between(from: 60.days.ago, to: Date.today)
+#     entry = Entry.new(
+#       emotion: Emotion.all.sample,
+#       created_at: time,
+#       updated_at: time,
+#       action: ['Yes', 'No'].sample,
+#       consequence: ['Yes', 'No'].sample,
+#       situation: ['family', 'work', 'friends', 'relationship'].sample,
+#       situation_details: Faker::Lorem.paragraph(sentence_count: rand(4..20))
+#     )
+#     entry.user = user
+#     entry.save
+#   end
+# end
 
-puts "#{Entry.count} entries created"
+# puts "#{Entry.count} entries created"
 # This removes any entry that has a top level emotion. Should probably fix this above 👆
 Entry.where(emotion: Emotion.where(parent_emotion: nil)).destroy_all
