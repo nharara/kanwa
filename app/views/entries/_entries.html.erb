@@ -1,14 +1,13 @@
 <% @entries.each do |entry| %>
   <div class="card card-trip text-bg-light mb-3 od py-1 px-2" data-controller="enty-thinner" data-action="click->enty-thinner#dropdown" >
-    <div class="d-flex justify-content-between px-3 pt-3">
-      <div>
+    <div class="px-3 pt-3">
+      <div class="d-flex justify-content-between align-items-center">
         <p class="pt-2 mb-0 fs-5"><%= entry.emotion.name.capitalize %></p>
-        <%# <p><span id="entry_badge" class="badge rounded-pill text-bg-primary"> %>
-        <p><span id="entry_badge" class="badge border border-primary text-dark">
-            <%= entry.situation.capitalize %>:</span>
-          <%= entry.situation_details %></p>
+        <p class="pt-2 ml-2 mb-0"><%= entry.created_at.strftime("%F") %></p>
       </div>
-      <p class="pt-2 mb-0"><%= entry.created_at.strftime("%F") %></p>
+      <div class="overflow-container" data-enty-thinner-target="text">
+        <p><%= entry.situation.capitalize %>: <%= entry.situation_details %></p>
+      </div>
     </div>
     <div class="justify-content-center p-3 d-none" data-enty-thinner-target="details">
       <div class="justify-content-center p-3">

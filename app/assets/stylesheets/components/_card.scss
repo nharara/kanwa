@@ -36,10 +36,22 @@
 }
 
 .card-trip {
-  overflow: hidden;
   background: $white;
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
   position: relative;
   border-radius: 8px;
+}
 
+.overflow-container {
+  overflow: hidden;
+  width: 100%;
+  height: 30px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.expanded-height {
+  height: max-content;
+  overflow: visible;
+  white-space: wrap;
 }
