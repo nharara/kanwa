@@ -14,8 +14,9 @@ class Emotion < ApplicationRecord
       "bad" => "#b9b9ea", #gray?
       "surprised" => "#ffcb77", #yellow
       "happy" => "#b9eaea", #light blue
-      "sad" => "8AB2BB" #dark blue
+      "sad" => "#8AB2BB" #dark blue
     }
+
 
 
 end
