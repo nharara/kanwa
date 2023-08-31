@@ -25,6 +25,7 @@ class EntriesController < ApplicationController
 
     # @entries = @entries.where("created_at >= ? and created_at <= ?", *params[:datefilter].split(" to ")) if params[:datefilter].present?   Past calendar search, keep for now.
 
+    @entries = @entries.where("DATE(entries.created_at) >= ? and DATE(entries.created_at) <= ?", params[:datefilter].split(" to ").first, params[:datefilter].split(" to ").last) if params[:datefilter].present?
 
     @parent_emotions = Emotion.where(parent_emotion: nil)
     # @entries = @entries.includes([:emotion])
