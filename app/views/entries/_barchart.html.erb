@@ -1,0 +1,9 @@
+<div
+id="barchart"
+data-controller="barchart"
+data-barchart-nots-value="<%= entries.where(action: "No").count %>"
+data-barchart-yes-value="<%= @yes_percentage %>"
+>
+  <div class="d-block w-100" data-barchart-target="bar">
+  </div>
+</div>
