@@ -6,7 +6,12 @@
         <p class="pt-2 ml-2 mb-0"><%= entry.created_at.strftime("%F") %></p>
       </div>
       <div class="overflow-container" data-enty-thinner-target="text">
-        <p><%= entry.situation.capitalize %>: <%= entry.situation_details %></p>
+        <div>
+          <%# <p><span id="entry_badge" class="badge rounded-pill text-bg-primary"> %>
+          <p><span id="entry_badge" class="badge border border-primary text-dark">
+              <%= entry.situation.capitalize %>:</span>
+            <%= entry.situation_details %></p>
+        </div>
       </div>
     </div>
     <div class="justify-content-center p-3 d-none" data-enty-thinner-target="details">
