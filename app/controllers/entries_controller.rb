@@ -16,7 +16,14 @@ class EntriesController < ApplicationController
 
       stats(@entries)
 
-      @entries_count = @entries.count
+
+      if params[:datefilter].present?
+        start_date = Date.parse(params[:datefilter].split(" to ").first)
+        end_date = Date.parse(params[:datefilter].split(" to ").last)
+      @entries_count = @entries.where(created_at: start_date.beginning_of_day..end_date.end_of_day).count
+      else
+        @entries_count = @entries.count
+      end
       # raise
     end
 
