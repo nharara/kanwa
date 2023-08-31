@@ -3,9 +3,9 @@ import ApexCharts from 'apexcharts';
 
 // Connects to data-controller="heatmap"
 export default class extends Controller {
-  static values = { keys: Array, datas: Array, info: String }
+  static values = { keys: Array, datas: Array, info: String, yes: String, nots: String }
 
-  static targets = ["heatmap", "pie", "donut"]
+  static targets = ["heatmap"]
 
   connect() {
 
@@ -68,5 +68,7 @@ export default class extends Controller {
 
     var chart = new ApexCharts(document.querySelector("#chart"), heatmapOptions);
     chart.render();
+
   }
+
 }

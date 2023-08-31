@@ -21,6 +21,7 @@
           <%== pagy_bootstrap_nav(@pagy) %>
         </div>
       </div>
+      <%= render "barchart", entries: @entries %>
     </div>
     <div class="d-flex justify-content-<%= @g3.present? ? 'between' : 'end' %>" style="width:95%">
       <% if @g3.present? %>
@@ -34,7 +35,7 @@
       <%# PDF begining %>
       <div class='py-0 text-end mt-1 mb-1'>
         <%= link_to entries_path(params.permit(:query, :datefilter).merge(format: :pdf)), target: "_blank" do %>
-          <i class="fa-regular fa-file-pdf fs-1"></i>
+          <i class="fa-solid fa-share-nodes"></i>
         <%end%>
       </div>
       <%# PDF ending %>
