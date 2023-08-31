@@ -26,7 +26,13 @@ class PagesController < ApplicationController
     @yes_data = @entries_by_day.transform_values { |entries| entries.count { |entry| entry.action == "Yes" } }
     @no_data = @entries_by_day.transform_values { |entries| entries.count { |entry| entry.action == "No" } }
 
-    @actions_data = [{ name: 'Controlled action', data: @yes_data }, { name: 'Uncontrolled action', data: @no_data }]
+
+
+    #count yes for each day
+
+    @percentage_data = @yes_data.map.with_index { |data, i| [data[0], data[1] + @no_data.values[i]] }.to_h
+
+    @actions_data = [{ name: 'Controlled action', data: @percentage_data }, { name: 'Uncontrolled action', data: @no_data }]
 
     @emotions_data = Emotion
                             .joins(child_emotions: { entries: :user })
