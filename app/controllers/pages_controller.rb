@@ -42,8 +42,8 @@ class PagesController < ApplicationController
                           .joins(child_emotions: { entries: :user })
                           .where('users.id' => current_user.id)
                           .where('entries.created_at BETWEEN ? AND ?', Date.today.beginning_of_day - 30.days, Date.today.end_of_day)
-                          .group('emotions.name')
-                          .select('emotions.name, COUNT(entries.id) as entry_count')
+                          .group('emotions.id')
+                          .select('emotions.name, emotions.id, COUNT(entries.id) as entry_count')
                           .order('entry_count DESC')
                           .first
 
