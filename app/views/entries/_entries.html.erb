@@ -3,7 +3,10 @@
     <div class="d-flex justify-content-between px-3 pt-3">
       <div>
         <p class="pt-2 mb-0 fs-5"><%= entry.emotion.name.capitalize %></p>
-        <p><%= entry.situation.capitalize %>: <%= entry.situation_details %></p>
+        <%# <p><span id="entry_badge" class="badge rounded-pill text-bg-primary"> %>
+        <p><span id="entry_badge" class="badge border border-primary text-dark">
+            <%= entry.situation.capitalize %>:</span>
+          <%= entry.situation_details %></p>
       </div>
       <p class="pt-2 mb-0"><%= entry.created_at.strftime("%F") %></p>
     </div>
