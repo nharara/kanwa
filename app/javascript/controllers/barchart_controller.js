@@ -81,11 +81,11 @@ export default class extends Controller {
         },
       },
       series: [{
-        name: "Yes",
+        name: "Controlled",
         data:
           [yesPercentage],
       }, {
-        name: "No",
+        name: "Uncontrolled",
         data:
           [noPercentage]
       }]
