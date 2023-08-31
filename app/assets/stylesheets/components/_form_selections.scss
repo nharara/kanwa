@@ -41,6 +41,21 @@
   color: $blue;
 }
 
+.next{
+  text-align: end;
+
+  button{
+    color: $blue;
+    border: none;
+    background-color: transparent;
+
+  }
+  button:active{
+    border: none;
+    background-color: transparent;
+  }
+}
+
 // #entry_situation_work+label {
 //   color: $green;
 // }

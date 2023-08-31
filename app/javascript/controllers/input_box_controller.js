@@ -10,6 +10,7 @@ export default class extends Controller {
   toggleOtherSituation() {
 
     this.situationDetailsTarget.style.display = 'block';
+
   }
 
 
@@ -21,8 +22,7 @@ export default class extends Controller {
       .then(response => response.text())
       .then((data) => {
         this.childEmotionTarget.innerHTML = data
-
-        console.log(data)
       });
   }
+
 }

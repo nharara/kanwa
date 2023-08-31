@@ -13,7 +13,6 @@ export default class extends Controller {
 
     const info = JSON.parse(this.infoValue)
     const data = Array.from(Object.keys(info), (week) => {
-      console.log(week);
       return {
         name: '',
         data: info[week]
@@ -64,7 +63,6 @@ export default class extends Controller {
         ]
       }
     };
-
 
     var chart = new ApexCharts(document.querySelector("#chart"), heatmapOptions);
     chart.render();
