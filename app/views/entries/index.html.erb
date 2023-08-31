@@ -7,10 +7,8 @@
   <%# <%= render "search-category" %>  <%# Change render name to correct one later  %>
   <div class='entries'>
     <p class="text-center mb-0">
-      <% if params[:query].blank? %>
-        <%= pluralize @entries.count, "entry" %> available
-      <% else %>
-        <%= pluralize @entries.count, "entry" %> for <code><%= params[:query] %></code>
+      <% if !params[:query].blank? %>
+        <%= pluralize @entries_count, "entry" %> for <code><%= params[:query] %></code>
       <% end %>
     </p>
     <%# Pagy %>

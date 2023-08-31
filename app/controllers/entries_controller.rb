@@ -16,6 +16,7 @@ class EntriesController < ApplicationController
 
       stats(@entries)
 
+      @entries_count = @entries.count
       # raise
     end
 
