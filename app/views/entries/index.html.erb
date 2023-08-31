@@ -10,6 +10,9 @@
       <% if !params[:query].blank? %>
         <%= pluralize @entries_count, "entry" %> for <code><%= params[:query] %></code>
       <% end %>
+      <% if !params[:datefilter].blank? %>
+        <p class="d-flex justify-content-center pt-3"> 📅<b><%= params[:datefilter] %> </b></p>
+      <% end %>
     </p>
     <%# Pagy %>
     <div class="d-flex justify-content-center pt-3">
