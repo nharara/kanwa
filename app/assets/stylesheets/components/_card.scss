@@ -9,7 +9,7 @@
 
 .cards-container {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
-  background-color: rgba(255, 255, 255, 0.65);
+  // background-color: rgba(255, 255, 255, 0.65);
   backdrop-filter: blur(8px);
   border: 0.5px solid white;
   border-radius: 15px;
@@ -22,8 +22,7 @@
 }
 
 .card {
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  background-color: rgba(255, 255, 255, 0.65);
+  // background-color: rgba(255, 255, 255, 0.65);
   backdrop-filter: blur(8px);
   border: 0.5px solid white;
   border-radius: 15px;
@@ -33,6 +32,7 @@
   padding-right: 20px;
   padding-bottom: 40px;
   margin: 20px 15px;
+  background-color: $white;
 }
 
 .card-trip {
