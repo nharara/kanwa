@@ -8,7 +8,7 @@
     <meta name="msapplication-TileColor" content="#fefefe">
     <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
     <meta name="theme-color" content="#fefefe">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <link rel="manifest" href="<%= asset_path 'manifest.json' %>">
     <%= render 'shared/ios_pwa_links' %>
     <%= csrf_meta_tags %>
@@ -23,11 +23,13 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
   </head>
   <body style="position: relative;">
-    <%= render "shared/navbar" %>
-    <div class="content">
-      <%= render "shared/flashes" %>
-      <%= yield %>
+    <div style="background-color: white;">
+      <%= render "shared/navbar" %>
+      <div class="content">
+        <%= render "shared/flashes" %>
+        <%= yield %>
+      </div>
+      <%= render "shared/navbar_bottom"  if user_signed_in? %>
     </div>
-    <%= render "shared/navbar_bottom"  if user_signed_in? %>
   </body>
 </html>
