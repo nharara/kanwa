@@ -7,7 +7,7 @@
 // General style
 $font-family-sans-serif: $body-font;
 $headings-font-family: $headers-font;
-$body-bg: white;
+$body-bg: #e3f2fd;
 $font-size-base: 1rem;
 
 // Colors
@@ -22,6 +22,11 @@ $warning: $orange;
 $border-radius: 8px;
 $border-radius-lg: 2px;
 $border-radius-sm: 2px;
+
+
+// Form style
+
+$input-bg: white;
 
 // Badge
 $badge-font-weight: font-weight-normal;
