@@ -5,7 +5,6 @@
             as: :radio_buttons,
             collection_wrapper_tag: 'div',
             collection_wrapper_class: 'category-wrapper',
-            wrapper_html: { data: {hider_target: 'section'} },
             item_wrapper_class: 'category-item m-1',
             input_html: { class: 'category-selector text-center', data: { action: "change->input-box#toggleOtherSituation" }},
             collection: Entry::SITUATIONS,
@@ -13,15 +12,13 @@
     <div data-input-box-target="situationDetails" style="display: none;">
       <%= f.input :situation_details,
         label: "What happened?",
-        input_html: { id: 'entry_situation_details' },
-        wrapper_html: {class: 'd-none', data: {hider_target: 'section'}}
+        input_html: { id: 'entry_situation_details' }
         %>
     </div>
     <%= f.association :emotion,
             collection: emotions,
             as: :radio_buttons,
             collection_wrapper_tag: 'div',
-            wrapper_html: {class: 'd-none', data: {hider_target: 'section'}},
             collection_wrapper_class: 'category-wrapper',
             item_wrapper_class: 'category-item m-1',
             input_html: { data: { "input-box-target" => "emotion", action: "change->input-box#toggleOtherEmotion"}, class: 'category-selector'} %>
@@ -31,7 +28,6 @@
             as: :radio_buttons,
             collection_wrapper_tag: 'div',
             collection_wrapper_class: 'category-wrapper',
-            wrapper_html: {class: 'd-none', data: {hider_target: 'section'}},
             item_wrapper_class: 'category-item m-1',
             input_html: { class: 'category-selector' },
             collection: ['Yes', 'No'],
@@ -42,19 +38,18 @@
             as: :radio_buttons,
             collection_wrapper_tag: 'div',
             collection_wrapper_class: 'category-wrapper',
-            wrapper_html: {class: 'd-none', data: {hider_target: 'section'}},
             item_wrapper_class: 'category-item m-1',
             input_html: { class: 'category-selector' },
             collection: ['Yes', 'No'],
             label: "Did things go the way you wanted through your action?" %>
     </div>
-    <div class="d-flex justify-content-center p-4 d-none" data-hider-target='section'>
+    <div class="d-flex justify-content-center p-4" >
       <%= f.submit 'Add Entry', class: 'btn text-primary' %>
     </div>
   <% end %>
-  <div class="next d-flex justify-content-between">
+  <%# <div class="next d-flex justify-content-between">
     <button  data-action="click-> hider#show">back</button>
     <button  data-action="click-> hider#hide">next</button>
-  </div>
+  </div> %>
   <%# data-controller="input-box" %>
 </div>
