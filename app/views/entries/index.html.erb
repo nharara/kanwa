@@ -3,7 +3,7 @@
     <h1>Entry History</h1>
   </div>
   <%= render "search", emotions: @parent_emotions %>
-  <%# This is the end of the dropdown code %>
+  <%# This is the end of the dropdowsearcn code %>
   <%# <%= render "search-category" %>  <%# Change render name to correct one later  %>
   <div class='entries'>
     <p class="text-center mb-0">
@@ -15,7 +15,7 @@
       <% end %>
     </p>
     <%# Pagy %>
-    <div class="d-flex justify-content-<%= @g3.present? ? 'between' : 'end' %>" style="width:95%">
+    <div class="d-flex justify-content-<%= @g3.present? ? 'center' : 'end' %>" style="width:95%">
       <% if @g3.present? %>
         <div class="entry-stat">
           <%# <% if !Entry::SITUATIONS.include?(params[:query]) %>
@@ -29,9 +29,9 @@
     </div>
     <%# PDF begining %>
     <div class='d-flex justify-content-end' style="width:95%">
-      <div class='d-flex align-items-end py-0 mt-1 mb-1'>
+      <div class='d-flex align-items-end py-0 mt-1 mb-2'>
         <%= link_to entries_path(params.permit(:query, :datefilter).merge(format: :pdf)), target: "_blank" do %>
-          <i class="fa-solid fa-share-nodes fa-xl"></i>
+          <i class="fa-regular fa-file-pdf fa-xl shadow" style="color: gray"></i>
         <%end%>
       </div>
     </div>
