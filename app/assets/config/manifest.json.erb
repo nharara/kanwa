@@ -1,17 +1,17 @@
 {
-  "background_color": "#fefefe",
-  "description": "Kanwa is an application to provide a structure for people looking for a way to regulate their actions during stressing emotional situations",
-  "display": "fullscreen",
-  "name": "Kanwa",
-  "icons": [
-    <% files = Dir.entries(Rails.root.join("app/assets/images/icons/")).select {|f| !File.directory? f} %>
-    <% files.each_with_index do |file, index| %>
-      <% match = file.match(/.+-(?<size>\d{2,3}x\d{2,3}).png/) %>
-      {
-        "src": "<%= image_path "icons/#{file}" %>",
-        "sizes": "<%= match && match[:size] %>",
-        "type": "image/png"
-      }<%= "," unless (files.size - 1) == index %>
-    <% end %>
-  ]
+"background_color": "#fefefe",
+"description": "Kanwa is an application to provide a structure for people looking for a way to regulate their actions during stressing emotional situations",
+"display": "fullscreen",
+"name": "Kanwa",
+"icons": [
+<% files = Dir.entries(Rails.root.join("app/assets/images/icons/")).select {|f| !File.directory? f} %>
+<% files.each_with_index do |file, index| %>
+  <% match = file.match(/.+-(?<size>\d{2,3}x\d{2,3}).png/) %>
+  {
+  "src": "<%= image_path "icons/#{file}" %>",
+  "sizes": "<%= match && match[:size] %>",
+  "type": "image/png"
+  }<%= "," unless (files.size - 1) == index %>
+<% end %>
+]
 }
